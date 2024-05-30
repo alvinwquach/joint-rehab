@@ -5,7 +5,7 @@ export const markhamPlazaLocation = {
   type: "document",
   fields: [
     {
-      name: "addressMarkhamPlaza",
+      name: "address",
       title: "Address",
       type: "string",
       description:
@@ -13,7 +13,7 @@ export const markhamPlazaLocation = {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: "addresslinenMarkhamPlaza",
+      name: "addresslinen",
       title: "Address Line N",
       type: "string",
       description:

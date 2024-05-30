@@ -34,9 +34,9 @@ export const team = {
       description: "Please provide the team the team member belongs to.",
       options: {
         list: [
-          { title: "Physiotherapist", value: "physiotherapist" },
-          { title: "Massage Therapist", value: "massage_therapist" },
-          { title: "Administration", value: "administration" },
+          { title: "Physiotherapist", value: "Physiotherapist" },
+          { title: "Massage Therapist", value: "Massage Therapist" },
+          { title: "Administration", value: "Administration" },
         ],
       },
       validation: (Rule: any) => Rule.required(),
