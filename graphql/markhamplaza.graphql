@@ -1,0 +1,15 @@
+query markhamPlazaLocation {
+  allMarkhamPlazaLocation {
+    addresslinen
+    phone
+    fax
+    email
+    sunday
+    monday
+    tuesday
+    wednesday
+    thursday
+    friday
+    saturday
+  }
+}

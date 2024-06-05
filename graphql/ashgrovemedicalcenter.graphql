@@ -1,0 +1,15 @@
+query ashgroveMedicalCenterLocation {
+  allAshgroveMedicalCenterLocation {
+    addresslinen
+    phone
+    fax
+    email
+    sunday
+    monday
+    tuesday
+    wednesday
+    thursday
+    friday
+    saturday
+  }
+}

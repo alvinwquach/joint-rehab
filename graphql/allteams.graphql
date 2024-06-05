@@ -1,0 +1,17 @@
+fragment team on Team {
+  image {
+    asset {
+      url
+    }
+  }
+  name
+  jobTitle
+  team
+  descriptionRaw
+}
+
+query allTeams {
+  allTeam {
+    ...team
+  }
+}
