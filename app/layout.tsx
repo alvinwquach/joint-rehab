@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ApolloWrapper } from "./components/ApolloWrapper";
 import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +52,7 @@ export default function RootLayout({
         <ApolloWrapper>
           <Navbar navigation={navigation} />
           {children}
+          <Footer />
         </ApolloWrapper>
       </body>
     </html>
