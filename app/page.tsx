@@ -15,7 +15,7 @@ interface TestimonialsQueryResult {
 
 export default function Home() {
   const { data: testimonialData } =
-    useSuspenseQuery<TestimonialsQueryResult>(GET_TESTIMONIALS);
+    useQuery<TestimonialsQueryResult>(GET_TESTIMONIALS);
 
   const testimonials = testimonialData?.allTestimonial ?? [];
   console.log(testimonials);
