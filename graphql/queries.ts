@@ -1,5 +1,27 @@
 import { gql } from "@apollo/client";
 
+const TESTIMONIAL_FRAGMENT = gql`
+  fragment testimonial on Testimonial {
+    image {
+      asset {
+        url
+      }
+    }
+    name
+    testimonial
+  }
+`;
+
+export const GET_TESTIMONIALS = gql`
+  ${TESTIMONIAL_FRAGMENT}
+
+  query allTestimonials {
+    allTestimonial {
+      ...testimonial
+    }
+  }
+`;
+
 const SERVICE_FRAGMENT = gql`
   fragment service on Service {
     image {
@@ -25,7 +47,6 @@ export const GET_SERVICES = gql`
   }
 `;
 
-
 export const GET_SPECIFIC_SERVICE = gql`
   ${SERVICE_FRAGMENT}
 
@@ -35,7 +56,6 @@ export const GET_SPECIFIC_SERVICE = gql`
     }
   }
 `;
-
 
 const TEAM_FRAGMENT = gql`
   fragment team on Team {
