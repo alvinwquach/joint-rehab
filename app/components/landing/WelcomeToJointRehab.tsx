@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import Section from "../common/Section";
-import jointRehabOutside from "../../../public/joint-rehab-photo.jpg";
+import jointRehabOutside from "../../../public/images/hero/joint-rehab-photo.jpg";
 import { rubik_scribble } from "@/util/fonts";
 
 function WelcomeToJointRehab() {
