@@ -422,6 +422,7 @@ export type RootQuery = {
   SanityImageAsset?: Maybe<SanityImageAsset>;
   Service?: Maybe<Service>;
   Team?: Maybe<Team>;
+  Testimonial?: Maybe<Testimonial>;
   allAshgroveMedicalCenterLocation: Array<AshgroveMedicalCenterLocation>;
   allDocument: Array<Document>;
   allMarkhamPlazaLocation: Array<MarkhamPlazaLocation>;
@@ -429,6 +430,7 @@ export type RootQuery = {
   allSanityImageAsset: Array<SanityImageAsset>;
   allService: Array<Service>;
   allTeam: Array<Team>;
+  allTestimonial: Array<Testimonial>;
 };
 
 
@@ -463,6 +465,11 @@ export type RootQueryServiceArgs = {
 
 
 export type RootQueryTeamArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type RootQueryTestimonialArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -520,6 +527,14 @@ export type RootQueryAllTeamArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   sort?: InputMaybe<Array<TeamSorting>>;
   where?: InputMaybe<TeamFilter>;
+};
+
+
+export type RootQueryAllTestimonialArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<Array<TestimonialSorting>>;
+  where?: InputMaybe<TestimonialFilter>;
 };
 
 export type SanityAssetSourceData = {
@@ -1044,6 +1059,52 @@ export type TeamSorting = {
   team?: InputMaybe<SortOrder>;
 };
 
+export type Testimonial = Document & {
+  __typename?: 'Testimonial';
+  /** Date the document was created */
+  _createdAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Document ID */
+  _id?: Maybe<Scalars['ID']['output']>;
+  _key?: Maybe<Scalars['String']['output']>;
+  /** Current document revision */
+  _rev?: Maybe<Scalars['String']['output']>;
+  /** Document type */
+  _type?: Maybe<Scalars['String']['output']>;
+  /** Date the document was last modified */
+  _updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  image?: Maybe<Image>;
+  /** Please provide full name. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Please provide a testimonial. */
+  testimonial?: Maybe<Scalars['String']['output']>;
+};
+
+export type TestimonialFilter = {
+  /** Apply filters on document level */
+  _?: InputMaybe<Sanity_DocumentFilter>;
+  _createdAt?: InputMaybe<DatetimeFilter>;
+  _id?: InputMaybe<IdFilter>;
+  _key?: InputMaybe<StringFilter>;
+  _rev?: InputMaybe<StringFilter>;
+  _type?: InputMaybe<StringFilter>;
+  _updatedAt?: InputMaybe<DatetimeFilter>;
+  image?: InputMaybe<ImageFilter>;
+  name?: InputMaybe<StringFilter>;
+  testimonial?: InputMaybe<StringFilter>;
+};
+
+export type TestimonialSorting = {
+  _createdAt?: InputMaybe<SortOrder>;
+  _id?: InputMaybe<SortOrder>;
+  _key?: InputMaybe<SortOrder>;
+  _rev?: InputMaybe<SortOrder>;
+  _type?: InputMaybe<SortOrder>;
+  _updatedAt?: InputMaybe<SortOrder>;
+  image?: InputMaybe<ImageSorting>;
+  name?: InputMaybe<SortOrder>;
+  testimonial?: InputMaybe<SortOrder>;
+};
+
 export type ServiceFragment = { __typename?: 'Service', name?: string | null, descriptionRaw?: any | null, image?: { __typename?: 'Image', asset?: { __typename?: 'SanityImageAsset', url?: string | null } | null } | null, slug?: { __typename?: 'Slug', current?: string | null } | null } & { ' $fragmentName'?: 'ServiceFragment' };
 
 export type AllServicesQueryVariables = Exact<{ [key: string]: never; }>;
@@ -1064,6 +1125,16 @@ export type AllTeamsQuery = { __typename?: 'RootQuery', allTeam: Array<(
     & { ' $fragmentRefs'?: { 'TeamFragment': TeamFragment } }
   )> };
 
+export type TestimonialFragment = { __typename?: 'Testimonial', name?: string | null, testimonial?: string | null, image?: { __typename?: 'Image', asset?: { __typename?: 'SanityImageAsset', url?: string | null } | null } | null } & { ' $fragmentName'?: 'TestimonialFragment' };
+
+export type AllTestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllTestimonialsQuery = { __typename?: 'RootQuery', allTestimonial: Array<(
+    { __typename?: 'Testimonial' }
+    & { ' $fragmentRefs'?: { 'TestimonialFragment': TestimonialFragment } }
+  )> };
+
 export type AshgroveMedicalCenterLocationQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1076,7 +1147,9 @@ export type MarkhamPlazaLocationQuery = { __typename?: 'RootQuery', allMarkhamPl
 
 export const ServiceFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"service"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Service"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"current"}}]}},{"kind":"Field","name":{"kind":"Name","value":"descriptionRaw"}}]}}]} as unknown as DocumentNode<ServiceFragment, unknown>;
 export const TeamFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"team"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Team"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"team"}},{"kind":"Field","name":{"kind":"Name","value":"descriptionRaw"}}]}}]} as unknown as DocumentNode<TeamFragment, unknown>;
+export const TestimonialFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"testimonial"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Testimonial"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"testimonial"}}]}}]} as unknown as DocumentNode<TestimonialFragment, unknown>;
 export const AllServicesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allServices"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allService"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"service"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"service"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Service"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"current"}}]}},{"kind":"Field","name":{"kind":"Name","value":"descriptionRaw"}}]}}]} as unknown as DocumentNode<AllServicesQuery, AllServicesQueryVariables>;
 export const AllTeamsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allTeams"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allTeam"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"team"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"team"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Team"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"jobTitle"}},{"kind":"Field","name":{"kind":"Name","value":"team"}},{"kind":"Field","name":{"kind":"Name","value":"descriptionRaw"}}]}}]} as unknown as DocumentNode<AllTeamsQuery, AllTeamsQueryVariables>;
+export const AllTestimonialsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allTestimonials"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allTestimonial"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"testimonial"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"testimonial"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Testimonial"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"testimonial"}}]}}]} as unknown as DocumentNode<AllTestimonialsQuery, AllTestimonialsQueryVariables>;
 export const AshgroveMedicalCenterLocationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ashgroveMedicalCenterLocation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allAshgroveMedicalCenterLocation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"addresslinen"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"fax"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"sunday"}},{"kind":"Field","name":{"kind":"Name","value":"monday"}},{"kind":"Field","name":{"kind":"Name","value":"tuesday"}},{"kind":"Field","name":{"kind":"Name","value":"wednesday"}},{"kind":"Field","name":{"kind":"Name","value":"thursday"}},{"kind":"Field","name":{"kind":"Name","value":"friday"}},{"kind":"Field","name":{"kind":"Name","value":"saturday"}}]}}]}}]} as unknown as DocumentNode<AshgroveMedicalCenterLocationQuery, AshgroveMedicalCenterLocationQueryVariables>;
 export const MarkhamPlazaLocationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"markhamPlazaLocation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allMarkhamPlazaLocation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"addresslinen"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"fax"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"sunday"}},{"kind":"Field","name":{"kind":"Name","value":"monday"}},{"kind":"Field","name":{"kind":"Name","value":"tuesday"}},{"kind":"Field","name":{"kind":"Name","value":"wednesday"}},{"kind":"Field","name":{"kind":"Name","value":"thursday"}},{"kind":"Field","name":{"kind":"Name","value":"friday"}},{"kind":"Field","name":{"kind":"Name","value":"saturday"}}]}}]}}]} as unknown as DocumentNode<MarkhamPlazaLocationQuery, MarkhamPlazaLocationQueryVariables>;

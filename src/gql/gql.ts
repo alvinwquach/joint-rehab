@@ -15,6 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}": types.ServiceFragmentDoc,
     "fragment team on Team {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  jobTitle\n  team\n  descriptionRaw\n}\n\nquery allTeams {\n  allTeam {\n    ...team\n  }\n}": types.TeamFragmentDoc,
+    "fragment testimonial on Testimonial {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  testimonial\n}\n\nquery allTestimonials {\n  allTestimonial {\n    ...testimonial\n  }\n}": types.TestimonialFragmentDoc,
     "query ashgroveMedicalCenterLocation {\n  allAshgroveMedicalCenterLocation {\n    addresslinen\n    phone\n    fax\n    email\n    sunday\n    monday\n    tuesday\n    wednesday\n    thursday\n    friday\n    saturday\n  }\n}": types.AshgroveMedicalCenterLocationDocument,
     "query markhamPlazaLocation {\n  allMarkhamPlazaLocation {\n    addresslinen\n    phone\n    fax\n    email\n    sunday\n    monday\n    tuesday\n    wednesday\n    thursday\n    friday\n    saturday\n  }\n}": types.MarkhamPlazaLocationDocument,
 };
@@ -41,6 +42,10 @@ export function graphql(source: "fragment service on Service {\n  image {\n    a
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "fragment team on Team {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  jobTitle\n  team\n  descriptionRaw\n}\n\nquery allTeams {\n  allTeam {\n    ...team\n  }\n}"): (typeof documents)["fragment team on Team {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  jobTitle\n  team\n  descriptionRaw\n}\n\nquery allTeams {\n  allTeam {\n    ...team\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "fragment testimonial on Testimonial {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  testimonial\n}\n\nquery allTestimonials {\n  allTestimonial {\n    ...testimonial\n  }\n}"): (typeof documents)["fragment testimonial on Testimonial {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  testimonial\n}\n\nquery allTestimonials {\n  allTestimonial {\n    ...testimonial\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
