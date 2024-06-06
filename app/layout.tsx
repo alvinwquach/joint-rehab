@@ -82,7 +82,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ApolloWrapper>
           <Navbar navigation={navigation} />
-          <main className="bg-slate-800">{children}</main>
+          <main className="bg-gray-800">{children}</main>
           <Footer />
         </ApolloWrapper>
       </body>
