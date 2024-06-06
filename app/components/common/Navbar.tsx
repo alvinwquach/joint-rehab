@@ -78,10 +78,11 @@ function Navbar({ navigation }: NavbarProps) {
                         <div className="py-1">
                           {item.dropdownOptions.map((option) => (
                             <MenuItem key={option.name}>
-                              <Link href={option.href}>
-                                <a className="block px-4 py-2 text-sm text-gray-700">
-                                  {option.name}
-                                </a>
+                              <Link
+                                href={option.href}
+                                className="block px-4 py-2 text-sm text-gray-700"
+                              >
+                                {option.name}
                               </Link>
                             </MenuItem>
                           ))}
