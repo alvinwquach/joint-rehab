@@ -5,7 +5,7 @@ import Section from "../common/Section";
 import jointRehabOutside from "../../../public/images/hero/joint-rehab-photo.jpg";
 import { rubik_scribble } from "@/util/fonts";
 
-function WelcomeToJointRehab() {
+function LivePainFree() {
   return (
     <Section className="!px-0" bg={Section.Colors.Dark}>
       <div className="grid grid-cols-1 items-center gap-y-2 sm:gap-y-6 lg:grid-cols-12 lg:pt-0">
@@ -61,4 +61,4 @@ function WelcomeToJointRehab() {
   );
 }
 
-export default WelcomeToJointRehab;
+export default LivePainFree;

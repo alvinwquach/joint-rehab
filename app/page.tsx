@@ -2,7 +2,7 @@
 
 import { useQuery, useSuspenseQuery } from "@apollo/client";
 import Section from "./components/common/Section";
-import WelcomeToJointRehab from "./components/landing/WelcomeToJointRehab";
+import LivePainFree from "./components/landing/LivePainFree";
 import AboutUs from "./components/landing/AboutUs";
 import Values from "./components/landing/Values";
 import { Testimonial } from "@/types/Testimonial";
@@ -22,16 +22,16 @@ export default function Home() {
 
   return (
     <main>
-      <Section className={Section.Colors.Dark}>
-        <WelcomeToJointRehab />
+      <Section bg={Section.Colors.Dark}>
+        <LivePainFree />
       </Section>
-      <Section className={Section.Colors.Light}>
+      <Section bg={Section.Colors.Light} className="!py-16">
         <AboutUs />
       </Section>
-      <Section className={Section.Colors.Light}>
+      <Section bg={Section.Colors.Light} className="!py-16">
         <Values />
       </Section>
-      <Section>
+      <Section bg={Section.Colors.Dark}>
         <Testimonials hasShowMore={true} testimonials={testimonials} />
       </Section>
     </main>
