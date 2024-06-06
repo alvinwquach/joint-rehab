@@ -86,23 +86,13 @@ function Team({ params }: TeamProps) {
       <Hero
         title={
           <>
-            <div className="flex gap-x-4">
-              <h1
-                className={`${rubik_scribble.className} text-5xl sm:text-7xl text-white uppercase leading-normal sm:leading-none`}
-              >
-                {"Meet "}
-                <span>the</span>
-              </h1>
-
-              <strong className="text-5xl sm:text-7xl text-white uppercase leading-normal sm:leading-none font-semibold">
-                team
-              </strong>
-            </div>
+            <span className={rubik_scribble.className}> Meet the</span>{" "}
+            <strong>Team</strong>
           </>
         }
-        description={`Get to know the people that create our ${formatTeamName(params.team)} team.`}
+        description={`Get to know the people that make up our ${formatTeamName(params.team)} team.`}
         desktopClassName="bg-contain"
-        imageClassName="!object-cover !object-top"
+        imageClassName="object-cover object-top"
         image={{
           mobile: MobileHero,
           desktop: DesktopHero,
