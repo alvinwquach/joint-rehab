@@ -32,8 +32,8 @@ const navigation = [
     name: "Our Team",
     href: "#",
     dropdownOptions: [
-      { name: "Physiotherapists", href: "/team/physiotherapists" },
-      { name: "Massage Therapists", href: "/team/massage-therapists" },
+      { name: "Physiotherapist", href: "/team/physiotherapist" },
+      { name: "Massage Therapist", href: "/team/massage-therapist" },
       { name: "Administration", href: "/team/administration" },
     ],
   },
