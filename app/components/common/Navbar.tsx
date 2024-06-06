@@ -14,7 +14,7 @@ import {
   MenuItems,
   Transition,
 } from "@headlessui/react";
-import MenuLink from "./MenuLink";
+import Menulink from "./MenuLink";
 import { HiMenu, HiX, HiChevronDown } from "react-icons/hi";
 
 type DropdownOption = {
@@ -75,14 +75,14 @@ function Navbar({ navigation }: NavbarProps) {
                     {navigation.map((item) => (
                       <div key={item.id} className="flex">
                         {!item.dropdownOptions ? (
-                          <MenuLink
+                          <Menulink
                             href={item.href}
                             className={`px-3 py-2 rounded-md text-sm font-medium hover:text-primary ${
                               pathName === item.href ? "underline" : ""
                             }`}
                           >
                             {item.name}
-                          </MenuLink>
+                          </Menulink>
                         ) : (
                           <Menu as="div" className="relative">
                             <MenuButton className="relative flex px-3 py-2 rounded-md text-sm font-medium hover:text-primary">
@@ -105,14 +105,14 @@ function Navbar({ navigation }: NavbarProps) {
                                 {item.dropdownOptions.map((option, index) => (
                                   <MenuItem key={index}>
                                     {({ active }) => (
-                                      <MenuLink
+                                      <Menulink
                                         href={`/${item.pathPrefix}/${option.href}`}
                                         className={`${
                                           active ? "bg-slate-100" : ""
                                         } block px-4 py-2 text-base text-gray-700`}
                                       >
                                         {option.name}
-                                      </MenuLink>
+                                      </Menulink>
                                     )}
                                   </MenuItem>
                                 ))}

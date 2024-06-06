@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { forwardRef } from "react";
 
-interface MenuLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface MenulinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
 
-const MenuLink = forwardRef<HTMLAnchorElement, MenuLinkProps>((props, ref) => {
+const Menulink = forwardRef<HTMLAnchorElement, MenulinkProps>((props, ref) => {
   let { href, children, ...rest } = props;
   return (
     <Link href={href} ref={ref} {...rest}>
@@ -14,4 +14,4 @@ const MenuLink = forwardRef<HTMLAnchorElement, MenuLinkProps>((props, ref) => {
   );
 });
 
-export default MenuLink;
+export default Menulink;
