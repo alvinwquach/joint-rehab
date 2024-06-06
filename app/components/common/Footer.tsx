@@ -32,7 +32,7 @@ function Footer() {
                   Phone: {""}
                   <a
                     className="underline hover:no-underline"
-                    href="tel: +1 (905)-471-3535"
+                    href="tel:+19054713535"
                   >
                     +1 (905)-471-3535
                   </a>
@@ -41,7 +41,7 @@ function Footer() {
                   Fax: {""}
                   <a
                     className="underline  hover:no-underline"
-                    href="fax: +1 (905) 471-3835"
+                    href="fax:+19054713835"
                   >
                     +1 (905)-471-3835
                   </a>
@@ -106,7 +106,7 @@ function Footer() {
                   Phone: {""}
                   <a
                     className="underline hover:text-green-350 hover:no-underline"
-                    href="tel: +1 (905)-471-6707"
+                    href="tel:+19054716707"
                   >
                     +1 (905) 471-6707
                   </a>
@@ -115,7 +115,7 @@ function Footer() {
                   Fax: {""}
                   <a
                     className="underline hover:no-underline"
-                    href="fax: +1 (905) 554-8670"
+                    href="fax:+19055548670"
                   >
                     +1 (905) 554-8670
                   </a>
