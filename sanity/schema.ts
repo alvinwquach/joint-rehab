@@ -3,7 +3,14 @@ import { ashgroveMedicalCenterLocation } from "./schemas/ashgroveMedicalCenterLo
 import { markhamPlazaLocation } from "./schemas/markhamPlazaLocation";
 import { service } from "./schemas/service";
 import { team } from "./schemas/team";
+import { testimonial } from "./schemas/testimonial";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [ashgroveMedicalCenterLocation, markhamPlazaLocation, service, team],
+  types: [
+    ashgroveMedicalCenterLocation,
+    markhamPlazaLocation,
+    service,
+    team,
+    testimonial,
+  ],
 };
