@@ -1,20 +1,20 @@
 import Image from "next/image";
 import Section from "../components/common/Section";
-import collegeOfPhysiotherapists from "../.././public/links/collegeOfPhysiotherapistsOfOntario.jpeg";
-import canadianPhysiotherapyAssocation from "../.././public/links/canadianPhysiotherapyAssocation.png";
-import ontarioPhysiotherapyAssocation from "../.././public/links/ontarioPhysiotherapyAssociation.jpeg";
-import collegeOfMassageTherapists from "../.././public/links/collegeofMassageTherapistsOfOntario.png";
-import registeredMassageTherapistsAssociation from "../.././public/links/registeredMassageTherapistsAssociationOfOntario .png";
-import canadianMassageTherapyResearchNetwork from "../.././public/links/canadianMassageTherapyResearchNetwork.jpeg";
-import acupunctureFoundationOfCanadaInstitute from "../.././public/links/acupunctureFoundationOfCanadaInstitute.png";
-import ministryOfHealth from "../.././public/links/ministryOfHealthCanada.png";
-import publicHealthOntario from "../.././public/links/publicHealthOntario.webp";
-import wsib from "../.././public/links/wsib.svg";
-import healthClaimsForAutoInsuranceResource from "../.././public/links/healthClaimsAutoInsurance.jpeg";
-import insuranceBureauxOfCanada from "../.././public/links/insuranceBureauOfCanada.jpg";
-import oakValleyHealth from "../.././public/links/oakValleyHealth.png";
-import worldHealthOrganization from "../.././public/links/worldHealthOrganization.png";
-import cancerCareOntario from "../.././public/links/cancerCareOntario.png";
+import collegeOfPhysiotherapists from "../.././public/images/links/collegeOfPhysiotherapistsOfOntario.jpeg";
+import canadianPhysiotherapyAssocation from "../.././public/images/links/canadianPhysiotherapyAssocation.png";
+import ontarioPhysiotherapyAssocation from "../.././public/images/links/ontarioPhysiotherapyAssociation.jpeg";
+import collegeOfMassageTherapists from "../.././public/images/links/collegeofMassageTherapistsOfOntario.png";
+import registeredMassageTherapistsAssociation from "../.././public/images/links/registeredMassageTherapistsAssociationOfOntario .png";
+import canadianMassageTherapyResearchNetwork from "../.././public/images/links/canadianMassageTherapyResearchNetwork.jpeg";
+import acupunctureFoundationOfCanadaInstitute from "../.././public/images/links/acupunctureFoundationOfCanadaInstitute.png";
+import ministryOfHealth from "../.././public/images/links/ministryOfHealthCanada.png";
+import publicHealthOntario from "../.././public/images/links/publicHealthOntario.webp";
+import wsib from "../.././public/images/links/wsib.svg";
+import healthClaimsForAutoInsuranceResource from "../.././public/images/links/healthClaimsAutoInsurance.jpeg";
+import insuranceBureauxOfCanada from "../.././public/images/links/insuranceBureauOfCanada.jpg";
+import oakValleyHealth from "../.././public/images/links/oakValleyHealth.png";
+import worldHealthOrganization from "../.././public/images/links/worldHealthOrganization.png";
+import cancerCareOntario from "../.././public/images/links/cancerCareOntario.png";
 
 const links = [
   {
