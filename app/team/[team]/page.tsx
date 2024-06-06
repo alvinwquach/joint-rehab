@@ -78,13 +78,13 @@ function Team({ params }: TeamProps) {
         {teamData.map((member) => (
           <div
             key={member.name}
-            className="flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-zinc-700"
+            className="bg-slate-800 flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-zinc-700"
           >
             <div className="relative flex justify-center w-64 h-64 md:w-48 md:h-48">
               <Image
                 src={member.image?.asset?.url ?? ""}
                 alt={`Headshot of ${member.name}` ?? "Member image"}
-                className="rounded-full drop-shadow-md transform transition-all duration-300 hover:scale-105 overflow-hidden object-cover"
+                className="rounded-full border-2 border-secondary  drop-shadow-md transform transition-all duration-300 hover:scale-105 overflow-hidden object-cover"
                 fill={true}
               />
             </div>
