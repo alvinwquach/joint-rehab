@@ -25,6 +25,18 @@ export const GET_SERVICES = gql`
   }
 `;
 
+
+export const GET_SPECIFIC_SERVICE = gql`
+  ${SERVICE_FRAGMENT}
+
+  query specificService($slug: String!) {
+    allService(where: { slug: { current: { eq: $slug } } }) {
+      ...service
+    }
+  }
+`;
+
+
 const TEAM_FRAGMENT = gql`
   fragment team on Team {
     image {

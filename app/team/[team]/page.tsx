@@ -4,10 +4,9 @@ import Section from "@/app/components/common/Section";
 import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { GET_SPECIFIC_TEAM } from "@/graphql/queries";
-import { useQuery, useSuspenseQuery } from "@apollo/client";
+import { useSuspenseQuery } from "@apollo/client";
 import { PortableTextBlock } from "@portabletext/types";
 
-// Define the types
 interface TeamMember {
   name: string;
   jobTitle: string;
@@ -19,7 +18,7 @@ interface TeamMember {
   descriptionRaw: PortableTextBlock[];
 }
 
-interface QueryData {
+interface TeamData {
   allTeam: TeamMember[];
 }
 
@@ -59,7 +58,7 @@ const teamOrder: { [key: string]: string[] } = {
 };
 
 function Team({ params }: TeamProps) {
-  const { data, error } = useSuspenseQuery<QueryData>(GET_SPECIFIC_TEAM, {
+  const { data, error } = useSuspenseQuery<TeamData>(GET_SPECIFIC_TEAM, {
     variables: { team: params.team },
   });
   if (error) return <p>Error: {error.message}</p>;
