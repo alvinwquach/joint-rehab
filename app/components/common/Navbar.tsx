@@ -14,7 +14,7 @@ import {
   MenuItems,
   Transition,
 } from "@headlessui/react";
-import Menulink from "./Menulink";
+import Menulink from "./MenuLink";
 import { HiMenu, HiX, HiChevronDown } from "react-icons/hi";
 
 type DropdownOption = {
