@@ -20,7 +20,7 @@ function Footer() {
               <h3 className="text-xl font-bold mb-4">Markham Plaza</h3>
               <address className="font-roboto not-italic text-base text-slate-200 flex flex-col justify-center mb-4 mt-4 w-full gap-2">
                 <a
-                  className="flex flex-col underline hover:text-green-350 hover:no-underline"
+                  className="flex flex-col underline hover:no-underline"
                   target="_blank"
                   href="https://www.google.com/maps?ll=43.893318,-79.263146&z=13&t=m&hl=en-US&gl=US&mapclient=embed&cid=7975377517180615746"
                   aria-label="Open link to google maps location of Joint Rehab's Markham Plaza location"
@@ -31,7 +31,7 @@ function Footer() {
                 <p>
                   Phone: {""}
                   <a
-                    className="underline hover:text-green-350 hover:no-underline"
+                    className="underline hover:no-underline"
                     href="tel: +1 (905)-471-3535"
                   >
                     +1 (905)-471-3535
@@ -40,7 +40,7 @@ function Footer() {
                 <p>
                   Fax: {""}
                   <a
-                    className="underline hover:text-green-350 hover:no-underline"
+                    className="underline  hover:no-underline"
                     href="fax: +1 (905) 471-3835"
                   >
                     +1 (905)-471-3835
@@ -49,7 +49,7 @@ function Footer() {
                 <p>
                   E-Mail: {""}
                   <a
-                    className="underline text-lg italic text-blue-150 hover:text-green-350 hover:no-underline"
+                    className="underline text-lg italic  hover:no-underline"
                     href="mailto:info@jointrehab.ca?subject=Request%20appointment"
                   >
                     info@jointrehab.ca
@@ -59,7 +59,7 @@ function Footer() {
             </div>
             <div className="mb-6 md:w-1/2">
               <div className="footer:flex flex-col text-left">
-                <h2 className="mb-4 text-xl font-roboto font-bold text-green-350 capitalize text-left">
+                <h2 className="mb-4 text-xl font-roboto font-bold capitalize text-left">
                   Store Hours
                 </h2>
                 <ul className="flex flex-col gap-1 font-roboto text-slate-200 text-left">
@@ -94,7 +94,7 @@ function Footer() {
               </h3>
               <address className="font-roboto not-italic text-base text-slate-200 flex flex-col justify-center mb-4 mt-4 w-full gap-2">
                 <a
-                  className="flex flex-col underline hover:text-green-350 hover:no-underline"
+                  className="flex flex-col underline hover:no-underline"
                   target={"_blank"}
                   href="https://www.google.com/maps?ll=43.893318,-79.263146&z=13&t=m&hl=en-US&gl=US&mapclient=embed&cid=7975377517180615746"
                   aria-label="Open link to google maps location of Joint Rehab's Ashgrove Medical Center location"
@@ -114,7 +114,7 @@ function Footer() {
                 <p>
                   Fax: {""}
                   <a
-                    className="underline hover:text-green-350 hover:no-underline"
+                    className="underline hover:no-underline"
                     href="fax: +1 (905) 554-8670"
                   >
                     +1 (905) 554-8670
@@ -123,7 +123,7 @@ function Footer() {
                 <p>
                   E-Mail: {""}
                   <a
-                    className="underline text-lg italic text-blue-150 hover:text-green-350 hover:no-underline"
+                    className="underline text-lg italic  hover:no-underline"
                     href="mailto:info-ashgrove@jointrehab.ca?subject=Request%20appointment"
                   >
                     info-ashgrove@jointrehab.ca
@@ -133,7 +133,7 @@ function Footer() {
             </div>
             <div className="mb-6 md:w-1/2">
               <div className="footer:flex flex-col text-left">
-                <h2 className="mb-4 text-xl font-roboto font-bold text-green-350 capitalize text-left">
+                <h2 className="mb-4 text-xl font-roboto font-bold capitalize text-left">
                   Store Hours
                 </h2>
                 <ul className="flex flex-col gap-1 font-roboto text-slate-200 text-left">
