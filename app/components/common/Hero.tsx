@@ -50,7 +50,7 @@ function Hero({
         </Section>
       </div>
 
-      <div className="block lg:hidden bg-black border-b border-b-zinc-700">
+      <div className="block lg:hidden bg-primary border-b border-b-zinc-700">
         {image.mobile && (
           <div className="h-[420px] w-full relative flex-1">
             <Image
@@ -67,9 +67,7 @@ function Hero({
           <h2 className="text-3xl tracking-tight font-title uppercase text-center">
             {title}
           </h2>
-          <p className="mt-4 text-xl text-gray-400 font-light text-center">
-            {description}
-          </p>
+          <p className="mt-4 text-xl  font-light text-center">{description}</p>
         </div>
       </div>
     </>

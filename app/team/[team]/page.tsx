@@ -100,7 +100,7 @@ function Team({ params }: TeamProps) {
             </div>
           </>
         }
-        description={`Get to know the people that create our ${formatTeamName(params.team)} team.`}
+        description={`Get to know the people that make up our ${formatTeamName(params.team)} team.`}
         desktopClassName="bg-contain"
         imageClassName="!object-cover !object-top"
         image={{
