@@ -24,7 +24,7 @@ const navigation = [
       { name: "Sports Therapy", href: "/services/sports-therapy" },
       { name: "Massage Therapy", href: "/services/massage-therapy" },
       { name: "Acupuncture", href: "/services/acupuncture" },
-      { name: "Custom Orthotics", href: "/services/custom-orthotics" },
+      { name: "Orthotics", href: "/services/orthotics" },
       { name: "Oncology Rehab", href: "/services/oncology-rehab" },
     ],
   },
