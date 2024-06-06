@@ -7,6 +7,8 @@ import Footer from "./components/common/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import BackToTopButton from "./components/ui/BackToTopButton";
+
 export const metadata: Metadata = {
   title: "Joint Rehab",
   description:
@@ -84,6 +86,7 @@ export default function RootLayout({
           <Navbar navigation={navigation} />
           <main className="bg-gray-800">{children}</main>
           <Footer />
+          <BackToTopButton />
         </ApolloWrapper>
       </body>
     </html>
