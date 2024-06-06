@@ -4,10 +4,9 @@ import "./globals.css";
 import { ApolloWrapper } from "./components/ApolloWrapper";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
+import BackToTopButton from "./components/ui/BackToTopButton";
 
 const inter = Inter({ subsets: ["latin"] });
-
-import BackToTopButton from "./components/ui/BackToTopButton";
 
 export const metadata: Metadata = {
   title: "Joint Rehab",
@@ -84,7 +83,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ApolloWrapper>
           <Navbar navigation={navigation} />
-          <main className="bg-gray-800">{children}</main>
+          <main className="bg-slate-800">{children}</main>
           <Footer />
           <BackToTopButton />
         </ApolloWrapper>

@@ -10,10 +10,11 @@ export default function Home() {
       <Section className={Section.Colors.Dark}>
         <WelcomeToJointRehab />
       </Section>
-      <Section className={Section.Colors.Light}>
+      <Section bg={Section.Colors.Light} className="!py-16">
         <AboutUs />
       </Section>
-      <Section className={Section.Colors.Light}>
+
+      <Section bg={Section.Colors.Light} className="!py-16">
         <Values />
       </Section>
     </main>
