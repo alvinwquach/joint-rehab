@@ -1,6 +1,6 @@
 function AboutUs() {
   return (
-    <div id="about-us" className="container mx-auto py-12">
+    <div className="container mx-auto py-12">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-semibold text-center mb-8">About Us</h2>
         <div className="flex flex-col md:flex-row md:justify-between">

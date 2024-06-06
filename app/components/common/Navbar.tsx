@@ -32,6 +32,10 @@ function Navbar({ navigation }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="bg-white border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,6 +126,7 @@ function Navbar({ navigation }: NavbarProps) {
                 className={`text-gray-900 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium ${
                   pathName === item.href ? "underline" : ""
                 }`}
+                onClick={handleLinkClick}
               >
                 {item.name}
               </Link>
@@ -147,6 +152,7 @@ function Navbar({ navigation }: NavbarProps) {
                           <Link
                             href={option.href}
                             className="block px-4 py-2 text-sm text-gray-700"
+                            onClick={handleLinkClick}
                           >
                             {option.name}
                           </Link>
