@@ -55,7 +55,6 @@ const Services = ({ services }: ServicesProps) => {
         pagination={{ clickable: true }}
         navigation
         keyboard={{ enabled: true, onlyInViewport: false }}
-        lazy={true}
         loop
       >
         {services.map((service, index) => (
