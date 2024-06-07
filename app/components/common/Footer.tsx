@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
+
 import { FaMapMarkerAlt, FaPhone, FaFax, FaEnvelope } from "react-icons/fa";
+import { RxEnvelopeClosed, RxEnvelopeOpen } from "react-icons/rx";
+
 import { CiFacebook, CiInstagram } from "react-icons/ci";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,6 +44,12 @@ function Footer({
   const markhamLocation = markhamPlazaLocation?.allMarkhamPlazaLocation[0];
   const ashgroveLocation =
     ashgroveMedicalCenterLocation?.allAshgroveMedicalCenterLocation[0];
+
+  const [isEnvelopeIconClosed, setIsEnvelopeIconClosed] = useState(false);
+
+  const handleMouseToggle = () => {
+    setIsEnvelopeIconClosed((prev) => !prev);
+  };
 
   return (
     <footer className="bg-primary text-white py-12">
@@ -105,6 +117,7 @@ function Footer({
                     </span>
                   </a>
                 </div>
+
                 <div className="flex items-center">
                   <FaPhone className="mr-2 text-secondary" />
                   <a
@@ -124,15 +137,22 @@ function Footer({
                   </a>
                 </div>
                 <div className="flex items-center">
-                  <FaEnvelope className="mr-2 text-secondary" />
+                  {isEnvelopeIconClosed ? (
+                    <RxEnvelopeOpen className="mr-2 block h-4 w-4 text-secondary" />
+                  ) : (
+                    <RxEnvelopeClosed className="mr-2 block h-4 w-4 text-secondary" />
+                  )}
                   <a
                     className="underline text-lg italic hover:no-underline"
-                    href={`mailto:${markhamLocation.email}?subject=Request%20appointment`}
+                    href={`mailto:${markhamLocation.email}?subject=Contact`}
+                    onMouseEnter={handleMouseToggle}
+                    onMouseLeave={handleMouseToggle}
                   >
                     {markhamLocation.email}
                   </a>
                 </div>
               </address>
+              {/* Markham Plaza Hours */}
               <h2 className="text-xl font-roboto font-bold mt-4">
                 Hours of Operation:
               </h2>
@@ -225,15 +245,22 @@ function Footer({
                   </a>
                 </div>
                 <div className="flex items-center">
-                  <FaEnvelope className="mr-2 text-secondary" />
+                  {isEnvelopeIconClosed ? (
+                    <RxEnvelopeOpen className="mr-2 block h-4 w-4 text-secondary" />
+                  ) : (
+                    <RxEnvelopeClosed className="mr-2 block h-4 w-4 text-secondary" />
+                  )}
                   <a
                     className="underline text-lg italic hover:no-underline"
-                    href={`mailto:${ashgroveLocation.email}?subject=Request%20appointment`}
+                    href={`mailto:${ashgroveLocation.email}?subject=Contact`}
+                    onMouseEnter={handleMouseToggle}
+                    onMouseLeave={handleMouseToggle}
                   >
                     {ashgroveLocation.email}
                   </a>
                 </div>
               </address>
+              {/* Ashgrove Medical Center Hours */}
               <h2 className="text-xl font-roboto font-bold mt-4">
                 Hours of Operation:
               </h2>
