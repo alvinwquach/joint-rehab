@@ -45,7 +45,7 @@ function Navbar({ navigation }: NavbarProps) {
             <div className="relative flex items-center justify-center h-16 w-full ">
               {/* Mobile menu button */}
               <div className="absolute inset-y-0 right-0 flex items-center lg:hidden  justify-self-start">
-                <DisclosureButton className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <DisclosureButton className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-third focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <HiX className="block h-6 w-6" aria-hidden="true" />
@@ -136,7 +136,7 @@ function Navbar({ navigation }: NavbarProps) {
             leaveTo="transform opacity-0 scale-95"
           >
             <DisclosurePanel className="lg:hidden relative">
-              <div className="px-2 pt-2 pb-3 absolute bg-slate-800 w-full">
+              <div className="px-2 pt-2 pb-3 absolute bg-third w-full">
                 {navigation.map((item) => (
                   <div key={item.id}>
                     {!item.dropdownOptions ? (
