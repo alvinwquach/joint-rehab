@@ -94,6 +94,7 @@ export const GET_SPECIFIC_TEAM = gql`
 export const GET_ASHGROVE_MEDICAL_CENTER_LOCATION = gql`
   query ashgroveMedicalCenterLocation {
     allAshgroveMedicalCenterLocation {
+      address
       addresslinen
       phone
       fax
@@ -112,6 +113,7 @@ export const GET_ASHGROVE_MEDICAL_CENTER_LOCATION = gql`
 export const GET_MARKHAM_PLAZA_LOCATION = gql`
   query markhamPlazaLocation {
     allMarkhamPlazaLocation {
+      address
       addresslinen
       phone
       fax
@@ -126,3 +128,4 @@ export const GET_MARKHAM_PLAZA_LOCATION = gql`
     }
   }
 `;
+

@@ -1,15 +1,20 @@
-query markhamPlazaLocation {
+fragment markhamPlazaLocation on MarkhamPlazaLocation {
+  address
+  addresslinen
+  phone
+  fax
+  email
+  sunday
+  monday
+  tuesday
+  wednesday
+  thursday
+  friday
+  saturday
+}
+
+query allMarkhamPlazaLocations {
   allMarkhamPlazaLocation {
-    addresslinen
-    phone
-    fax
-    email
-    sunday
-    monday
-    tuesday
-    wednesday
-    thursday
-    friday
-    saturday
+    ...markhamPlazaLocation
   }
 }
