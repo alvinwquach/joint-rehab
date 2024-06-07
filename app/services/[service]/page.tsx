@@ -1,25 +1,9 @@
-"use client";
-
-import { useSuspenseQuery } from "@apollo/client";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Section from "@/app/components/common/Section";
 import { GET_SPECIFIC_SERVICE } from "@/graphql/queries";
 import { PortableTextBlock } from "@portabletext/types";
-
-interface Service {
-  name: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
-  descriptionRaw: PortableTextBlock[];
-}
-
-interface ServiceData {
-  allService: Service[];
-}
+import { getClient } from "@/app/lib/apollo-client";
 
 interface ServiceProps {
   params: {
@@ -27,13 +11,14 @@ interface ServiceProps {
   };
 }
 
-function Service({ params }: ServiceProps) {
-  const { data, error } = useSuspenseQuery<ServiceData>(GET_SPECIFIC_SERVICE, {
+async function Service({ params }: ServiceProps) {
+  const { data: serviceData, error } = await getClient().query({
+    query: GET_SPECIFIC_SERVICE,
     variables: { slug: params.service },
   });
 
   if (error) return <p>Error: {error.message}</p>;
-  const service = data?.allService[0];
+  const service = serviceData?.allService[0];
 
   if (!service) return <p>Service not found</p>;
 
