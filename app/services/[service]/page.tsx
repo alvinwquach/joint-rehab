@@ -2,12 +2,25 @@ import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Section from "@/app/components/common/Section";
 import { GET_SPECIFIC_SERVICE } from "@/graphql/queries";
-import { PortableTextBlock } from "@portabletext/types";
 import { getClient } from "@/app/lib/apollo-client";
+import { formatTeamAndServiceName } from "@/util/formatTeamAndServiceName";
 
 interface ServiceProps {
   params: {
     service: string;
+  };
+}
+
+export async function generateMetadata({ params }: ServiceProps) {
+  const formattedServiceName = formatTeamAndServiceName(params.service);
+  const capitalizedServiceName = formattedServiceName
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return {
+    title: `Joint Rehab - ${capitalizedServiceName}`,
+    description: `${formattedServiceName} is just one of many services offered at Joint Rehab located in both Markham Plaza and Ashtown Medical Center.`,
   };
 }
 
