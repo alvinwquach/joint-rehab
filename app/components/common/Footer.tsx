@@ -1,13 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
-import { FaMapMarkerAlt, FaPhone, FaFax, FaEnvelope } from "react-icons/fa";
-import { RxEnvelopeClosed, RxEnvelopeOpen } from "react-icons/rx";
-
-import { CiFacebook, CiInstagram } from "react-icons/ci";
 import Image from "next/image";
 import Link from "next/link";
+import { FaMapMarkerAlt, FaPhone, FaFax } from "react-icons/fa";
+import { RxEnvelopeClosed, RxEnvelopeOpen } from "react-icons/rx";
+import { CiFacebook, CiInstagram } from "react-icons/ci";
 
 const companyLinks = [
   { href: "cancellation-policy", text: "Cancellation Policy" },
