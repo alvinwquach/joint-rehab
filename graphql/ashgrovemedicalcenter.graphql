@@ -1,15 +1,20 @@
-query ashgroveMedicalCenterLocation {
+fragment ashgroveMedicalCenterLocation on AshgroveMedicalCenterLocation {
+  address
+  addresslinen
+  phone
+  fax
+  email
+  sunday
+  monday
+  tuesday
+  wednesday
+  thursday
+  friday
+  saturday
+}
+
+query allAshgroveMedicalCenterLocations {
   allAshgroveMedicalCenterLocation {
-    addresslinen
-    phone
-    fax
-    email
-    sunday
-    monday
-    tuesday
-    wednesday
-    thursday
-    friday
-    saturday
+    ...ashgroveMedicalCenterLocation
   }
 }

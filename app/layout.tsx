@@ -5,6 +5,12 @@ import { ApolloWrapper } from "./components/ApolloWrapper";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import BackToTopButton from "./components/ui/BackToTopButton";
+import { getClient } from "./lib/apollo-client";
+import { Location } from "@/types/Location";
+import {
+  GET_ASHGROVE_MEDICAL_CENTER_LOCATION,
+  GET_MARKHAM_PLAZA_LOCATION,
+} from "@/graphql/queries";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,6 +19,11 @@ export const metadata: Metadata = {
   description:
     "Joint Rehab in Markham provides excellent services in physiotherapy, sports therapy, custom orthotics, acupuncture, massage therapy, and oncology rehab.",
 };
+
+interface LayoutData {
+  allAshgroveMedicalCenterLocation: Location[];
+  allMarkhamPlazaLocation: Location[];
+}
 
 const navigation = [
   { id: 1, name: "Home", href: "/", pathPrefix: "" },
@@ -45,49 +56,32 @@ const navigation = [
   { id: 5, name: "Contact", href: "/contact", pathPrefix: "" },
 ];
 
-// const navigation = [
-//   { name: "Home", href: "/" },
-//   { name: "About Us", href: "#about-us" },
-//   {
-//     name: "Services",
-//     href: "#",
-//     dropdownOptions: [
-//       { name: "Physiotherapy", href: "/services/physiotherapy" },
-//       { name: "Sports Therapy", href: "/services/sports-therapy" },
-//       { name: "Massage Therapy", href: "/services/massage-therapy" },
-//       { name: "Acupuncture", href: "/services/acupuncture" },
-//       { name: "Orthotics", href: "/services/orthotics" },
-//       { name: "Oncology Rehab", href: "/services/oncology-rehab" },
-//     ],
-//   },
-//   {
-//     name: "Our Team",
-//     href: "#",
-//     dropdownOptions: [
-//       { name: "Physiotherapist", href: "/team/physiotherapist" },
-//       { name: "Massage Therapist", href: "/team/massage-therapist" },
-//       { name: "Administration", href: "/team/administration" },
-//     ],
-//   },
-//   { name: "Links", href: "/links" },
-//   { name: "Contact", href: "/contact" },
-// ];
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { data: markhamPlazaData } = await getClient().query({
+    query: GET_MARKHAM_PLAZA_LOCATION,
+  });
+  const { data: ashgroveData } = await getClient().query({
+    query: GET_ASHGROVE_MEDICAL_CENTER_LOCATION,
+  });
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <ApolloWrapper>
           <Navbar navigation={navigation} />
           <main className="bg-slate-800">{children}</main>
-          <Footer />
+          <Footer
+            markhamPlazaLocation={markhamPlazaData}
+            ashgroveMedicalCenterLocation={ashgroveData}
+          />
           <BackToTopButton />
         </ApolloWrapper>
       </body>
     </html>
   );
 }
+
