@@ -6,27 +6,13 @@ import Link from "next/link";
 import { FaMapMarkerAlt, FaPhone, FaFax } from "react-icons/fa";
 import { RxEnvelopeClosed, RxEnvelopeOpen } from "react-icons/rx";
 import { CiFacebook, CiInstagram } from "react-icons/ci";
+import { Location } from "@/types/Location";
 
 const companyLinks = [
   { href: "cancellation-policy", text: "Cancellation Policy" },
   { href: "privacy-policy", text: "Privacy Policy" },
   { href: "accessibility-policy", text: "Accessibility Policy" },
 ];
-
-interface Location {
-  address: string;
-  addresslinen: string;
-  phone: string;
-  fax: string;
-  email: string;
-  sunday: string;
-  monday: string;
-  tuesday: string;
-  wednesday: string;
-  thursday: string;
-  friday: string;
-  saturday: string;
-}
 
 interface FooterProps {
   markhamPlazaLocation?: { allMarkhamPlazaLocation: Location[] };
