@@ -9,7 +9,12 @@ const AboutUs = () => {
         Welcome to
       </h2>
       <div className="w-[250px]">
-        <Image src={logo} height={48} width={240} alt="BTS logo" />
+        <Image
+          src={logo}
+          alt="Image of company logo with the words physiotherapy and massage therapy"
+          height={48}
+          width={240}
+        />
       </div>
       <div className="mt-6 w-16 bg-primary">
         <hr className="border-2 border-primary" />
@@ -22,14 +27,14 @@ const AboutUs = () => {
         pain, accelerate recovery, improve mobility and overall health.
       </div>
 
-      <div className="mt-8 flex justify-between items-start">
+      <div className="mt-8 flex flex-col justify-between items-start md:flex-row gap-y-4">
         <div className="flex items-center">
           <div>
             <FaCheckCircle
-              className="text-green-500 mr-2 mb-2inline-block"
+              className="text-green-500 mr-2 mb-2 inline-block"
               size={24}
             />
-            <h3 className="text-xl font-bold sm:text-2xl inline">Vision</h3>
+            <h3 className="text-xl font-bold sm:text-2xl inline">Value</h3>
             <p className="text-xl">
               To be a center of excellence in the provision of physiotherapy
               services.
