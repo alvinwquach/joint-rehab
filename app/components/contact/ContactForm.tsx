@@ -45,7 +45,7 @@ function ContactForm() {
       >
         <div className="flex flex-col space-y-4">
           <h2 className="text-2xl text-gray-550 dark:text-white font-roboto font-bold">
-            Let's get to know you
+            Let&rsquo;s get to know you
           </h2>
           <div className="flex flex-col justify-evenly md:gap-4 sm:flex-row">
             <div className="flex flex-col w-full">
