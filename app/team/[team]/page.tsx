@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { rubik_scribble } from "@/util/fonts";
@@ -7,13 +5,9 @@ import Section from "@/app/components/common/Section";
 import Hero from "@/app/components/common/Hero";
 import { GET_SPECIFIC_TEAM } from "@/graphql/queries";
 import { TeamMember } from "@/types/TeamMember";
-import { useSuspenseQuery } from "@apollo/client";
 import MobileHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import DesktopHero from "../../../public/images/hero/joint-rehab-photo.jpg";
-
-interface TeamData {
-  allTeam: TeamMember[];
-}
+import { getClient } from "@/app/lib/apollo-client";
 
 interface TeamProps {
   params: {
@@ -50,19 +44,21 @@ const teamOrder: { [key: string]: string[] } = {
   ],
 };
 
-function Team({ params }: TeamProps) {
-  const { data, error } = useSuspenseQuery<TeamData>(GET_SPECIFIC_TEAM, {
+async function Team({ params }: TeamProps) {
+  const { data: teamData } = await getClient().query({
+    query: GET_SPECIFIC_TEAM,
     variables: { team: params.team },
   });
-  if (error) return <p>Error: {error.message}</p>;
 
   // Create a shallow copy of teamData
-  const teamData = [...(data?.allTeam || [])];
+  const teamInformation = [...(teamData?.allTeam || [])];
 
   // Sort team data according to the predefined order
   const order = teamOrder[params.team];
   if (order) {
-    teamData.sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
+    teamInformation.sort(
+      (a, b) => order.indexOf(a.name) - order.indexOf(b.name)
+    );
   }
 
   function formatTeamName(team: string): string {
@@ -89,7 +85,7 @@ function Team({ params }: TeamProps) {
 
       <Section>
         <div>
-          {teamData.map((member) => (
+          {teamInformation.map((member) => (
             <div
               key={member.name}
               className="bg-slate-800 flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-zinc-700"
