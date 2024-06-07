@@ -61,8 +61,8 @@ function Navbar({ navigation }: NavbarProps) {
                 <Link href="/">
                   <div className="flex items-center cursor-pointer ml-2">
                     <Image
-                      src="/logo-new.png"
-                      alt="An image of Joint Rehab logo"
+                      src="/images/logo-new.png"
+                      alt="Image of company logo with the words physiotherapy and massage therapy"
                       width={150}
                       height={150}
                       quality={100}
