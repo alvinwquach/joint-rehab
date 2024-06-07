@@ -1,6 +1,13 @@
 import Section from "../components/common/Section";
 import React from "react";
 
+export const metadata = {
+  title: "Joint Rehab - Privacy Policy",
+  openGraph: {
+    title: "Joint Rehab - Privacy Policy",
+  },
+};
+
 type ClauseProps = {
   title: string;
   children?: React.ReactNode;
@@ -146,6 +153,6 @@ function PrivacyPolicy() {
       </Clause>
     </Section>
   );
-}
+};
 
 export default PrivacyPolicy;

@@ -16,6 +16,14 @@ import oakValleyHealth from "../.././public/images/links/oakValleyHealth.png";
 import worldHealthOrganization from "../.././public/images/links/worldHealthOrganization.png";
 import cancerCareOntario from "../.././public/images/links/cancerCareOntario.png";
 
+export const metadata = {
+  title: "Joint Rehab - Links",
+  openGraph: {
+    title: "Joint Rehab - Links",
+  },
+};
+
+
 const links = [
   {
     title: "College of Physiotherapists of Ontario",
