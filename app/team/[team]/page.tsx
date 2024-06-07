@@ -74,7 +74,7 @@ function Team({ params }: TeamProps) {
       <Hero
         title={
           <>
-            <span className={rubik_scribble.className}> Meet the</span>{" "}
+            <span className={`${rubik_scribble.className}`}> Meet the</span>{" "}
             <strong>Team</strong>
           </>
         }
@@ -94,19 +94,19 @@ function Team({ params }: TeamProps) {
               key={member.name}
               className="bg-slate-800 flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-zinc-700"
             >
-              <div className="relative flex justify-center w-64 h-64 md:w-48 md:h-48">
+              <div className="relative flex justify-center md:justify-start w-64 h-64 md:w-48 md:h-48 mx-auto md:mx-0">
                 <Image
                   src={member.image?.asset?.url ?? ""}
                   alt={`Headshot of ${member.name}` ?? "Member image"}
-                  className="rounded-full border-2 border-secondary  drop-shadow-md transform transition-all duration-300 hover:scale-105 overflow-hidden object-cover"
+                  className="rounded-full border-2 border-third drop-shadow-md transform transition-all duration-300 hover:scale-105 overflow-hidden object-cover"
                   fill={true}
                 />
               </div>
               <div className="pt-8 md:pt-0 flex-1 flex flex-col pl-0 md:pl-16">
-                <h2 className="text-xl sm:text-2xl text-primary font-bold mb-1 text-center sm:text-left">
+                <h2 className="text-xl sm:text-2xl text-white font-bold mb-1 text-center sm:text-left">
                   {member.name}
                 </h2>
-                <h3 className="text-gray-400 mb-4 text-center sm:text-left">
+                <h3 className=" mb-4 text-center sm:text-left">
                   {member.jobTitle}
                 </h3>
                 <PortableText
@@ -114,9 +114,7 @@ function Team({ params }: TeamProps) {
                   components={{
                     block: {
                       normal: ({ children }) => (
-                        <p className="mb-4 font-light text-gray-200">
-                          {children}
-                        </p>
+                        <p className="mb-4">{children}</p>
                       ),
                     },
                   }}
@@ -129,6 +127,5 @@ function Team({ params }: TeamProps) {
     </>
   );
 }
-
 
 export default Team;
