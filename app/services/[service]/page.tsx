@@ -1,26 +1,9 @@
-// "use client";
-
-// import { useSuspenseQuery } from "@apollo/client";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Section from "@/app/components/common/Section";
 import { GET_SPECIFIC_SERVICE } from "@/graphql/queries";
 import { PortableTextBlock } from "@portabletext/types";
 import { getClient } from "@/app/lib/apollo-client";
-
-interface Service {
-  name: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
-  descriptionRaw: PortableTextBlock[];
-}
-
-interface ServiceData {
-  allService: Service[];
-}
 
 interface ServiceProps {
   params: {

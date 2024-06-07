@@ -4,7 +4,6 @@ import { rubik_scribble } from "@/util/fonts";
 import Section from "@/app/components/common/Section";
 import Hero from "@/app/components/common/Hero";
 import { GET_SPECIFIC_TEAM } from "@/graphql/queries";
-import { TeamMember } from "@/types/TeamMember";
 import MobileHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import DesktopHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import { getClient } from "@/app/lib/apollo-client";
