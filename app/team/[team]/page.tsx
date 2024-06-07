@@ -7,6 +7,7 @@ import { GET_SPECIFIC_TEAM } from "@/graphql/queries";
 import MobileHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import DesktopHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import { getClient } from "@/app/lib/apollo-client";
+import { formatTeamName } from "../../../util/formatTeamName";
 
 interface TeamProps {
   params: {
@@ -43,6 +44,19 @@ const teamOrder: { [key: string]: string[] } = {
   ],
 };
 
+export async function generateMetadata({ params }: TeamProps) {
+  const formattedTeamName = formatTeamName(params.team);
+  const capitalizedTeamName = formattedTeamName
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return {
+    title: `Joint Rehab - ${capitalizedTeamName}`,
+    description: `Meet the team. Get to know the people that make up our ${formattedTeamName} team.`,
+  };
+}
+
 async function Team({ params }: TeamProps) {
   const { data: teamData } = await getClient().query({
     query: GET_SPECIFIC_TEAM,
@@ -58,10 +72,6 @@ async function Team({ params }: TeamProps) {
     teamInformation.sort(
       (a, b) => order.indexOf(a.name) - order.indexOf(b.name)
     );
-  }
-
-  function formatTeamName(team: string): string {
-    return team.split("-").join(" ");
   }
 
   return (
