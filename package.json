@@ -23,7 +23,8 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "sanity": "^3.44.0",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.2",
