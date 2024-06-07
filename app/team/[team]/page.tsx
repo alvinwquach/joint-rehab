@@ -6,22 +6,10 @@ import { rubik_scribble } from "@/util/fonts";
 import Section from "@/app/components/common/Section";
 import Hero from "@/app/components/common/Hero";
 import { GET_SPECIFIC_TEAM } from "@/graphql/queries";
+import { TeamMember } from "@/types/TeamMember";
 import { useSuspenseQuery } from "@apollo/client";
-import { PortableTextBlock } from "@portabletext/types";
 import MobileHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import DesktopHero from "../../../public/images/hero/joint-rehab-photo.jpg";
-
-
-interface TeamMember {
-  name: string;
-  jobTitle: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
-  descriptionRaw: PortableTextBlock[];
-}
 
 interface TeamData {
   allTeam: TeamMember[];

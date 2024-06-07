@@ -1,6 +1,13 @@
 import Section from "../components/common/Section";
 import React from "react";
 
+export const metadata = {
+  title: "Joint Rehab - Accessibility Policy",
+  openGraph: {
+    title: "Joint Rehab - Accessibility Policy",
+  },
+};
+
 type ClauseProps = {
   title: string;
   children?: React.ReactNode;

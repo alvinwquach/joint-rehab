@@ -1,6 +1,14 @@
 import Section from "../components/common/Section";
 import React from "react";
 
+export const metadata = {
+  title: "Joint Rehab - Cancellation Policy",
+  openGraph: {
+    title: "Joint Rehab - Cancellation",
+  },
+};
+
+
 function CancellationPolicy() {
   return (
     <Section>
