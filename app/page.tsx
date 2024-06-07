@@ -35,11 +35,11 @@ export default function Home() {
       <Section bg={Section.Colors.Light} className="!py-16">
         <AboutUs />
       </Section>
-      <Section bg={Section.Colors.Dark} className="!py-16">
-        <Values />
-      </Section>
-      <Section bg={Section.Colors.Light} className="py-16">
+      <Section bg={Section.Colors.Dark} className="py-16">
         <Services services={services} />
+      </Section>
+      <Section bg={Section.Colors.Light} className="!py-16">
+        <Values />
       </Section>
       <Section bg={Section.Colors.Dark}>
         <Testimonials hasShowMore={true} testimonials={testimonials} />
