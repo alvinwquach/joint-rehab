@@ -6,8 +6,14 @@ import LivePainFree from "./components/landing/LivePainFree";
 import AboutUs from "./components/landing/AboutUs";
 import Values from "./components/landing/Values";
 import { Testimonial } from "@/types/Testimonial";
-import { GET_TESTIMONIALS } from "@/graphql/queries";
+import { Service } from "@/types/Service";
+import { GET_TESTIMONIALS, GET_SERVICES } from "@/graphql/queries";
 import Testimonials from "./components/landing/Testimonials";
+import Services from "./components/landing/Services";
+
+interface ServicesQueryResult {
+  allService: Service[];
+}
 
 interface TestimonialsQueryResult {
   allTestimonial: Testimonial[];
@@ -16,9 +22,10 @@ interface TestimonialsQueryResult {
 export default function Home() {
   const { data: testimonialData } =
     useQuery<TestimonialsQueryResult>(GET_TESTIMONIALS);
+  const { data: serviceData } = useQuery<ServicesQueryResult>(GET_SERVICES);
 
   const testimonials = testimonialData?.allTestimonial ?? [];
-  console.log(testimonials);
+  const services = serviceData?.allService ?? [];
 
   return (
     <main>
@@ -28,8 +35,11 @@ export default function Home() {
       <Section bg={Section.Colors.Light} className="!py-16">
         <AboutUs />
       </Section>
-      <Section bg={Section.Colors.Light} className="!py-16">
+      <Section bg={Section.Colors.Dark} className="!py-16">
         <Values />
+      </Section>
+      <Section bg={Section.Colors.Light} className="py-16">
+        <Services services={services} />
       </Section>
       <Section bg={Section.Colors.Dark}>
         <Testimonials hasShowMore={true} testimonials={testimonials} />
