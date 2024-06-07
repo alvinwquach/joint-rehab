@@ -58,10 +58,15 @@ export async function generateMetadata({ params }: TeamProps) {
 }
 
 async function Team({ params }: TeamProps) {
-  const { data: teamData } = await getClient().query({
+  const { data: teamData, error } = await getClient().query({
     query: GET_SPECIFIC_TEAM,
-    variables: { team: params.team },
+    variables: { slug: params.team },
   });
+
+  if (error) return <p>Error: {error.message}</p>;
+  const team = teamData?.allTeam;
+
+  if (!team) return <p>Team not found</p>;
 
   // Create a shallow copy of teamData
   const teamInformation = [...(teamData?.allTeam || [])];
