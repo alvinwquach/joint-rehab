@@ -1,4 +1,5 @@
-import React from "react";
+import Section from "../components/common/Section";
+import ContactForm from "../components/contact/ContactForm";
 
 export const metadata = {
   title: "Joint Rehab - Contact",
@@ -8,7 +9,13 @@ export const metadata = {
 };
 
 function Contact() {
-  return <div></div>;
+  return (
+    <div>
+      <Section>
+        <ContactForm />
+      </Section>
+    </div>
+  );
 }
 
 export default Contact;
