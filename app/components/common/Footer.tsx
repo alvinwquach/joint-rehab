@@ -13,9 +13,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const companyLinks = [
+  { href: "cancellation-policy", text: "Cancellation Policy" },
   { href: "privacy-policy", text: "Privacy Policy" },
   { href: "accessibility-policy", text: "Accessibility Policy" },
-  { href: "cancellation-policy", text: "Cancellation Policy" },
 ];
 
 function Footer() {
@@ -238,7 +238,7 @@ function Footer() {
             <Link
               key={index}
               href={link.href}
-              className="mr-4 text-white hover:text-primary"
+              className="mr-4 text-white underline hover:no-underline"
               aria-label={`Open link to ${link.text}`}
             >
               {link.text}
