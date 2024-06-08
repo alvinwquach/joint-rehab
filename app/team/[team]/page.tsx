@@ -4,10 +4,11 @@ import { rubik_scribble } from "@/util/fonts";
 import Section from "@/app/components/common/Section";
 import Hero from "@/app/components/common/Hero";
 import { GET_SPECIFIC_TEAM } from "@/graphql/queries";
+import { TeamMember } from "@/types/TeamMember";
 import MobileHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import DesktopHero from "../../../public/images/hero/joint-rehab-photo.jpg";
 import { getClient } from "@/app/lib/apollo-client";
-import { formatTeamAndServiceName } from "../../../util/formatTeamAndServiceName";
+import { formatTeamAndServiceName } from "@/util/formatTeamAndServiceName";
 
 interface TeamProps {
   params: {
@@ -60,7 +61,7 @@ export async function generateMetadata({ params }: TeamProps) {
 async function Team({ params }: TeamProps) {
   const { data: teamData, error } = await getClient().query({
     query: GET_SPECIFIC_TEAM,
-    variables: { slug: params.team },
+    variables: { team: params.team },
   });
 
   if (error) return <p>Error: {error.message}</p>;
@@ -79,6 +80,10 @@ async function Team({ params }: TeamProps) {
     );
   }
 
+  function formatTeamName(team: string): string {
+    return team.split("-").join(" ");
+  }
+
   return (
     <>
       <Hero
@@ -88,7 +93,7 @@ async function Team({ params }: TeamProps) {
             <strong>Team</strong>
           </>
         }
-        description={`Get to know the people that make up our ${formatTeamAndServiceName(params.team)} team.`}
+        description={`Get to know the people that make up our ${formatTeamName(params.team)} team.`}
         desktopClassName="bg-contain"
         imageClassName="object-cover object-top"
         image={{
