@@ -294,7 +294,7 @@ function Footer({
           ))}
         </div>
         <p className="text-center mt-4">
-          © 2023 Joint Rehab. All rights reserved.
+          © {new Date().getFullYear()} Joint Rehab
         </p>
       </div>
     </footer>
