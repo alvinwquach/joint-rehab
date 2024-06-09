@@ -87,7 +87,7 @@ const Testimonials = ({
                   onClick={() => {
                     setShowMore(!showMore);
                   }}
-                  className="relative focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 text-sm text-white font-semibold h-12 px-6 rounded-lg flex items-center bg-sky-700 hover:bg-sky-500 pointer-events-auto"
+                  className="relative focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 text-sm text-white font-semibold h-12 px-6 rounded-lg flex items-center bg-zinc-700 hover:bg-zinc-500 pointer-events-auto"
                 >
                   Show More...
                 </button>
