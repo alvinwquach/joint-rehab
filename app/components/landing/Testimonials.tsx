@@ -15,7 +15,7 @@ const TestimonialCard = ({
   imageUrl,
 }: TestimonialCardProps) => {
   return (
-    <figure className="group inline-flex gap-4 p-6 mb-4 w-full relative flex-col-reverse bg-primary highlight-white/5 rounded-lg">
+    <figure className="group inline-flex gap-4 p-6 mb-4 w-full relative flex-col-reverse bg-zinc-800 highlight-white/5 rounded-lg">
       <blockquote>
         <p className="text-gray-400">{testimonial}</p>
       </blockquote>
