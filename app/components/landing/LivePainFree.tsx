@@ -39,8 +39,8 @@ function LivePainFree() {
           <h3 className="font-light pt-8 text-xl sm:text-2xl relative">
             <span className="font-bold text-primary relative">
               <em>
-                Leave your health in expert hands. Let us help. We know about
-                your body.
+                {/* Leave your health in expert hands. Let us help. We know about
+                your body. */}
               </em>
             </span>
           </h3>
