@@ -1,6 +1,6 @@
 "use client";
 
-import { useSuspenseQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Section from "./components/common/Section";
 import LivePainFree from "./components/landing/LivePainFree";
 import AboutUs from "./components/landing/AboutUs";
@@ -21,9 +21,8 @@ interface TestimonialsQueryResult {
 
 export default function Home() {
   const { data: testimonialData } =
-    useSuspenseQuery<TestimonialsQueryResult>(GET_TESTIMONIALS);
-  const { data: serviceData } =
-    useSuspenseQuery<ServicesQueryResult>(GET_SERVICES);
+    useQuery<TestimonialsQueryResult>(GET_TESTIMONIALS);
+  const { data: serviceData } = useQuery<ServicesQueryResult>(GET_SERVICES);
 
   const testimonials = testimonialData?.allTestimonial ?? [];
   const services = serviceData?.allService ?? [];
