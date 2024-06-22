@@ -19,7 +19,7 @@ const AboutUs = () => {
       <div className="mt-6 w-16 bg-primary">
         <hr className="border-2 border-primary" />
       </div>
-      <div className="mt-6 text-xl text-gray-200 font-light">
+      <div className="mt-6 text-xl text-black font-light">
         Joint Rehab is a rehabilitation clinic located in the heart of Markham.
         We pride ourselves in making it our goal to help you move and feel
         better. We are dedicated to providing the best treatment possible in the
@@ -34,8 +34,10 @@ const AboutUs = () => {
               className="text-green-500 mr-2 mb-2 inline-block"
               size={24}
             />
-            <h3 className="text-xl font-bold sm:text-2xl inline">Value</h3>
-            <p className="text-xl">
+            <h3 className="text-xl font-bold sm:text-2xl inline text-black">
+              Value
+            </h3>
+            <p className="text-xl text-black">
               To be a center of excellence in the provision of physiotherapy
               services.
             </p>
@@ -47,8 +49,10 @@ const AboutUs = () => {
               className="text-green-500 mr-2 mb-2 inline-block"
               size={24}
             />
-            <h3 className="text-xl font-bold sm:text-2xl inline">Mission</h3>
-            <p className="text-xl">
+            <h3 className="text-xl font-bold sm:text-2xl inline text-black">
+              Mission
+            </h3>
+            <p className="text-xl text-black">
               To provide the best possible care to maximize each patient’s
               rehabilitation potential.
             </p>
