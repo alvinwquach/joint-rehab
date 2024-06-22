@@ -53,6 +53,12 @@ const navigation = [
     ],
   },
   { id: 4, name: "Contact", href: "/contact", pathPrefix: "" },
+  {
+    id: 5,
+    name: "Request Appointment",
+    href: "request-appointment",
+    pathPrefix: "",
+  },
 ];
 
 export default async function RootLayout({
