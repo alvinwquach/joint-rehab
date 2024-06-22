@@ -36,34 +36,8 @@ function Footer({
   };
 
   return (
-    <footer className="bg-slate-700 text-white py-12">
+    <footer className="bg-gray-700 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-y-5">
-          <Image
-            src="/images/logo-new.png"
-            alt="Image of company logo with the words physiotherapy and massage therapy"
-            width={350}
-            height={100}
-          />
-          <div className="flex gap-x-4">
-            <a
-              href="https://www.facebook.com/people/Joint-Rehab/100054544805277/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open link to Joint Rehab Facebook"
-            >
-              <CiFacebook className="text-4xl hover:text-secondary" />
-            </a>
-            <a
-              href="https://www.instagram.com/jointrehab/?hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open link to Joint Rehab Instagram"
-            >
-              <CiInstagram className="text-4xl hover:text-secondary" />
-            </a>
-          </div>
-        </div>
         <div className="flex flex-col md:flex-row justify-between my-8 ">
           {/* Markham Plaza */}
           {markhamLocation && (
@@ -292,6 +266,26 @@ function Footer({
               {link.text}
             </Link>
           ))}
+        </div>
+        <div className="flex justify-end gap-y-5">
+          <div className="flex gap-x-4">
+            <a
+              href="https://www.facebook.com/people/Joint-Rehab/100054544805277/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open link to Joint Rehab Facebook"
+            >
+              <CiFacebook className="text-4xl hover:text-secondary" />
+            </a>
+            <a
+              href="https://www.instagram.com/jointrehab/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open link to Joint Rehab Instagram"
+            >
+              <CiInstagram className="text-4xl hover:text-secondary" />
+            </a>
+          </div>
         </div>
         <p className="text-center mt-4">
           © {new Date().getFullYear()} Joint Rehab
