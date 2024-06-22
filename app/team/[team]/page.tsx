@@ -107,7 +107,7 @@ async function Team({ params }: TeamProps) {
           {teamInformation.map((member) => (
             <div
               key={member.name}
-              className="bg-slate-800 flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-zinc-700"
+              className="bg-slate-800 flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-third"
             >
               <div className="relative flex justify-center md:justify-start w-64 h-64 md:w-48 md:h-48 mx-auto md:mx-0">
                 <Image
