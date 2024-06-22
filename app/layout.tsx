@@ -52,8 +52,7 @@ const navigation = [
       { name: "Administration", href: "administration" },
     ],
   },
-  { id: 4, name: "Links", href: "/links", pathPrefix: "" },
-  { id: 5, name: "Contact", href: "/contact", pathPrefix: "" },
+  { id: 4, name: "Contact", href: "/contact", pathPrefix: "" },
 ];
 
 export default async function RootLayout({
