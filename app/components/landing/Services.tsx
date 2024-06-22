@@ -17,8 +17,11 @@ function ServiceCard({ service }: ServiceCardProps) {
           <Image
             src={service.image?.asset?.url || ""}
             alt={service?.name ?? ""}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="(min-width: 808px) 50vw, 100vw"
+            style={{
+              objectFit: "cover",
+            }}
             quality={100}
           />
         </Link>
