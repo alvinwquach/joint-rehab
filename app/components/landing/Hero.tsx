@@ -18,9 +18,9 @@ function LandingHero() {
       <div className="absolute inset-0 bg-gray-700 bg-opacity-30"></div>
       <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 relative z-10">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-          We're here for your medical needs
+          We&apos;re here for your medical needs
         </h1>
-        <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+        <p className="mt-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">
           At Joint Rehab, we specialize in physiotherapy, acupuncture, massage
           therapy, hands therapy, custom orthotics, sports therapy, and oncology
           rehab. Our dedicated team of registered therapists provides
