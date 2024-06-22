@@ -10,6 +10,7 @@ import { Service } from "@/types/Service";
 import { GET_TESTIMONIALS, GET_SERVICES } from "@/graphql/queries";
 import Testimonials from "./components/landing/Testimonials";
 import Services from "./components/landing/Services";
+import LinksCarousel from "./components/landing/LinksCarousel";
 
 interface ServicesQueryResult {
   allService: Service[];
@@ -31,6 +32,9 @@ export default function Home() {
     <main>
       <Section bg={Section.Colors.Dark}>
         <LivePainFree />
+      </Section>
+      <Section bg={Section.Colors.Dark} className="py-16">
+        <LinksCarousel />
       </Section>
       <Section bg={Section.Colors.Light} className="!py-16">
         <AboutUs />

@@ -10,7 +10,7 @@ import {
 function makeClient() {
   const httpLink = new HttpLink({
     uri: `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/production/default`,
-    fetchOptions: { cache: "no-store" },
+    // fetchOptions: { cache: "no-store" },
   });
   return new ApolloClient({
     cache: new InMemoryCache(),
