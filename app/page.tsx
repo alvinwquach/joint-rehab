@@ -33,13 +33,11 @@ export default function Home() {
     <main>
       <LandingHero />
 
-      <Section bg={Section.Colors.Dark} className="py-16">
+      <Section bg={Section.Colors.Light} className="py-16">
         <LinksCarousel />
-      </Section>
-      <Section bg={Section.Colors.Light} className="!py-16">
         <AboutUs />
       </Section>
-      <Section bg={Section.Colors.Dark} className="!py-16">
+      <Section bg={Section.Colors.Primary} className="!py-16">
         <Values />
       </Section>
       <Section bg={Section.Colors.Light} className="py-16">

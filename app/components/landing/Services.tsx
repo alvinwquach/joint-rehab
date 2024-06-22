@@ -23,7 +23,7 @@ function ServiceCard({ service }: ServiceCardProps) {
           />
         </Link>
       </div>
-      <h3 className="mt-2 text-xl font-bold">{service.name}</h3>
+      <h3 className="mt-2 text-xl font-bold text-black">{service.name}</h3>
     </div>
   );
 }
@@ -36,10 +36,10 @@ const Services = ({ services }: ServicesProps) => {
   return (
     <div className="container mx-auto py-12">
       <div className="flex pb-12 flex-col items-center justify-center">
-        <h3 className="text-3xl sm:text-5xl font-roboto font-bold text-center text-blue-550 dark:text-white font-title">
+        <h3 className="text-3xl sm:text-5xl font-roboto font-bold text-center  text-blue-500 font-title">
           Our Services
         </h3>
-        <p className="mx-auto mt-3 max-w-2xl text-md sm:text-xl font-roboto sm:mt-4 text-center dark:text-green-350">
+        <p className="mx-auto mt-3 max-w-2xl text-md sm:text-xl font-roboto sm:mt-4 text-center text-black">
           Check out what we have in store!
         </p>
       </div>
