@@ -11,6 +11,7 @@ import { GET_TESTIMONIALS, GET_SERVICES } from "@/graphql/queries";
 import Testimonials from "./components/landing/Testimonials";
 import Services from "./components/landing/Services";
 import LinksCarousel from "./components/landing/LinksCarousel";
+import LandingHero from "./components/landing/Hero";
 
 interface ServicesQueryResult {
   allService: Service[];
@@ -30,9 +31,8 @@ export default function Home() {
 
   return (
     <main>
-      <Section bg={Section.Colors.Dark}>
-        <LivePainFree />
-      </Section>
+      <LandingHero />
+
       <Section bg={Section.Colors.Dark} className="py-16">
         <LinksCarousel />
       </Section>
