@@ -2,9 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ServiceFragment } from "@/src/gql/graphql";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import "swiper/swiper-bundle.css";
 
 interface ServiceCardProps {
   service: ServiceFragment;
@@ -37,7 +34,7 @@ interface ServicesProps {
 
 const Services = ({ services }: ServicesProps) => {
   return (
-    <>
+    <div className="container mx-auto py-12">
       <div className="flex pb-12 flex-col items-center justify-center">
         <h3 className="text-3xl sm:text-5xl font-roboto font-bold text-center text-blue-550 dark:text-white font-title">
           Our Services
@@ -46,24 +43,12 @@ const Services = ({ services }: ServicesProps) => {
           Check out what we have in store!
         </p>
       </div>
-      <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        className="w-full"
-        grabCursor={true}
-        slidesPerView={2}
-        scrollbar={{ draggable: true }}
-        pagination={{ clickable: true }}
-        navigation
-        keyboard={{ enabled: true, onlyInViewport: false }}
-        loop
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <SwiperSlide key={index}>
-            <ServiceCard service={service} />
-          </SwiperSlide>
+          <ServiceCard key={index} service={service} />
         ))}
-      </Swiper>
-    </>
+      </div>
+    </div>
   );
 };
 

@@ -28,7 +28,6 @@
     "react-phone-number-input": "^3.4.3",
     "sanity": "^3.44.0",
     "styled-components": "^6.1.11",
-    "swiper": "^11.1.4",
     "yup": "^1.4.0"
   },
   "devDependencies": {
