@@ -8,14 +8,13 @@ const AboutUs = () => {
       <h2 className="text-xl tracking-widest mb-3 uppercase font-semibold">
         Welcome to
       </h2>
-      <div className="w-[250px]">
-        <Image
-          src={logo}
-          alt="Image of company logo with the words physiotherapy and massage therapy"
-          height={48}
-          width={240}
-        />
-      </div>
+      <Image
+        src={logo}
+        alt="Image of company logo with the words physiotherapy and massage therapy"
+        height={48}
+        width={240}
+      />
+
       <div className="mt-6 w-16 bg-primary">
         <hr className="border-2 border-primary" />
       </div>
