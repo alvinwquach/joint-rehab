@@ -162,9 +162,12 @@ const LinksCarousel = () => {
             <Image
               src={link.image}
               alt={link.title}
-              width={150}
-              height={150}
-              className="w-36 h-36 mx-auto mb-2 object-contain bg-white"
+              width={200}
+              height={200}
+              className="w-24 h-24 mx-auto mb-2"
+              style={{
+                objectFit: "contain",
+              }}
             />
           </a>
         </div>
