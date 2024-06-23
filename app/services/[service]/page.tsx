@@ -46,6 +46,7 @@ async function Service({ params }: ServiceProps) {
               className="object-cover rounded-lg drop-shadow-md transform transition-all duration-300 "
               width={1200}
               height={600}
+              priority
             />
           </div>
         </div>
