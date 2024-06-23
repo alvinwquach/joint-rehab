@@ -26,7 +26,22 @@ const AboutUs = () => {
         shortest time possible, using our knowledge and expertise to ease your
         pain, accelerate recovery, improve mobility and overall health.
       </div>
-
+      <div className="mt-6 text-xl text-black font-light">
+        At Joint Rehab, we have a dedicated team of registered physiotherapists,
+        massage therapists and acupuncturists who will address your pain,
+        strength, mobility, and function so you can return to the activities
+        that are important to you. Our therapists have a number of years of
+        experience and will develop a personalized treatment plan for each and
+        every client, ensuring they receive the highest standard of care. Our
+        multidisciplinary team is deeply committed to helping our patients
+        achieve their rehabilitation goals, while enhancing their quality of
+        life.
+      </div>
+      <div className="mt-6 text-xl text-black font-light">
+        Joint Rehab has two locations, both located in theheart of Markham. Both
+        sites have ample, free parking and are wheelchair accessible. We offer
+        appointments seven days a week.
+      </div>
       <div className="mt-8 flex flex-col justify-between items-start md:flex-row gap-y-4">
         <div className="flex items-center">
           <div>
