@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import cn from "clsx";
 import { TestimonialFragment } from "@/src/gql/graphql";
@@ -9,15 +9,15 @@ interface TestimonialCardProps {
   imageUrl: string | null | undefined;
 }
 
-const TestimonialCard = ({
+function TestimonialCard({
   name,
   testimonial,
   imageUrl,
-}: TestimonialCardProps) => {
+}: TestimonialCardProps) {
   return (
-    <figure className="group inline-flex gap-4 p-6 mb-4 w-full relative flex-col-reverse bg-zinc-800 highlight-white/5 rounded-lg">
+    <figure className="group inline-flex gap-4 p-6 mb-4 w-full relative flex-col-reverse bg-white highlight-white/5 rounded-lg">
       <blockquote>
-        <p className="text-gray-400">{testimonial}</p>
+        <p className="text-gray-800">{testimonial}</p>
       </blockquote>
 
       <figcaption className="flex items-center space-x-4">
@@ -30,30 +30,30 @@ const TestimonialCard = ({
           height={56}
         />
         <div className="flex-auto">
-          <div className="text-base text-slate-50 font-semibold">
+          <div className="text-base text-gray-800 font-semibold">
             <div>{name}</div>
           </div>
         </div>
       </figcaption>
     </figure>
   );
-};
+}
 
 interface TestimonialsProps {
   hasShowMore?: boolean;
   testimonials: TestimonialFragment[];
 }
 
-const Testimonials = ({
+function Testimonials({
   hasShowMore = false,
   testimonials,
-}: TestimonialsProps) => {
-  const [showMore, setShowMore] = React.useState(!hasShowMore);
+}: TestimonialsProps) {
+  const [showMore, setShowMore] = useState(!hasShowMore);
   return (
     <>
       <div className="relative">
         <div className="flex pb-16 flex-col items-center justify-center">
-          <h2 className="text-3xl sm:text-4xl text-center font-title uppercase">
+          <h2 className="text-3xl sm:text-4xl text-center uppercase">
             Hear from our <strong>clients</strong>
           </h2>
         </div>
@@ -98,6 +98,6 @@ const Testimonials = ({
       </div>
     </>
   );
-};
+}
 
 export default Testimonials;
