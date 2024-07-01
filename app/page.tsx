@@ -12,6 +12,8 @@ import { GET_TESTIMONIALS, GET_SERVICES } from "@/graphql/queries";
 import Testimonials from "./components/landing/Testimonials";
 import Services from "./components/landing/Services";
 import WhyChooseUs from "./components/landing/WhyChooseUs";
+import Accessible from "./components/landing/Accessible";
+import ValueMission from "./components/landing/ValueMisson";
 
 interface ServicesQueryResult {
   allService: Service[];
@@ -37,11 +39,17 @@ export default function Home() {
         <LinksCarousel />
         <AboutUs />
       </Section>
-      <WhyChooseUs />
+
+      <Section className="py-16">
+        <Accessible />
+      </Section>
+      <Section bg={Section.Colors.Light} className="py-16">
+        <ValueMission />
+      </Section>
       <Section bg={Section.Colors.Primary} className="!py-16">
         <Values />
       </Section>
-
+      <WhyChooseUs />
       <Section bg={Section.Colors.Light} className="py-16">
         <Services services={services} />
       </Section>
