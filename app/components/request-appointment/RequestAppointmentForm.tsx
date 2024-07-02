@@ -1,13 +1,13 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input/input";
+import ReactDatePicker from "react-datepicker";
 import "react-phone-number-input/style.css";
 import { Service } from "@/types/Service";
 import { useSuspenseQuery } from "@apollo/client";
 import { GET_SERVICES } from "@/graphql/queries";
-import ReactDatePicker from "react-datepicker";
-import { useSearchParams } from "next/navigation";
 
 interface ServicesQueryResult {
   allService: Service[];

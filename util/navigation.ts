@@ -31,5 +31,6 @@ export const navigation = [
     name: "Request Appointment",
     href: "request-appointment",
     pathPrefix: "",
+    type: "button",
   },
 ];

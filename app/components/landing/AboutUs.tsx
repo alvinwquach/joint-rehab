@@ -37,9 +37,9 @@ const AboutUs = () => {
         life.
       </div>
       <div className="mt-6 text-xl text-black font-light">
-        Joint Rehab has two locations, both located in theheart of Markham. Both
-        sites have ample, free parking and are wheelchair accessible. We offer
-        appointments seven days a week.
+        We have two locations in the heart of Markham. Both sites have ample,
+        free parking and are wheelchair accessible. We offer appointments seven
+        days a week.
       </div>
     </>
   );
