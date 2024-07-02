@@ -58,7 +58,10 @@ async function Service({ params }: ServiceProps) {
             {service.name}
           </h2>
           <Link
-            href="/request-appointment"
+            href={{
+              pathname: "/request-appointment",
+              query: { serviceName: service.name },
+            }}
             className="mt-4 md:mt-0 bg-primary text-white font-bold py-2 px-4 rounded hover:bg-primary-dark transition-all duration-300"
           >
             Request Appointment
