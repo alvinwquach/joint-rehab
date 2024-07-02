@@ -33,7 +33,6 @@ const RequestAppointmentForm = () => {
     console.log(data);
   };
 
-  console.log(services);
   const {
     register,
     handleSubmit,
