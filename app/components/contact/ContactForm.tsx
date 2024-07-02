@@ -1,6 +1,8 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { FaUser } from "react-icons/fa";
+import { MdEmail, MdPhone, MdSubject } from "react-icons/md";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input/input";
 import "react-phone-number-input/style.css";
 
@@ -56,15 +58,21 @@ function ContactForm() {
               )}
               <label
                 htmlFor="firstName"
-                className="block mb-2 mt-5 text-sm font-roboto text-gray-900 dark:text-white"
+                className="block mb-2 mt-5 text-sm font-roboto text-white"
               >
                 First Name
               </label>
-              <input
-                placeholder="First Name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                {...register("firstName", { required: true, maxLength: 30 })}
-              />
+              <div className="relative mb-4">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <FaUser className="h-4 w-4 text-gray-100" />
+                </div>
+                <input
+                  placeholder="First Name"
+                  type="text"
+                  className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...register("firstName", { required: true, maxLength: 30 })}
+                />
+              </div>
             </div>
             <div className="flex flex-col w-full">
               {errors.lastName && (
@@ -74,15 +82,21 @@ function ContactForm() {
               )}
               <label
                 htmlFor="lastName"
-                className="block mb-2 mt-5 text-sm font-roboto text-gray-900 dark:text-white"
+                className="block mb-2 mt-5 text-sm font-roboto text-white"
               >
                 Last Name
               </label>
-              <input
-                placeholder="Last Name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                {...register("lastName", { required: true, maxLength: 30 })}
-              />
+              <div className="relative mb-4">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <FaUser className="h-4 w-4 text-gray-100" />
+                </div>
+                <input
+                  placeholder="Last Name"
+                  type="text"
+                  className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...register("lastName", { required: true, maxLength: 30 })}
+                />
+              </div>
             </div>
           </div>
           <div className="flex flex-col justify-evenly md:gap-4 sm:flex-row">
@@ -94,25 +108,29 @@ function ContactForm() {
               )}
               <label
                 htmlFor="email"
-                className="block mb-2 mt-5 text-sm font-roboto text-gray-900 dark:text-white"
+                className="block mb-2 mt-5 text-sm font-roboto text-white"
               >
                 Email
               </label>
-              <input
-                type="text"
-                placeholder="Email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
-                    message: "Please enter a valid email",
-                  },
-                })}
-              />
+              <div className="relative mb-4">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <MdEmail className="h-4 w-4 text-gray-100" />
+                </div>
+                <input
+                  placeholder="Email"
+                  type="text"
+                  className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+                      message: "Please enter a valid email",
+                    },
+                  })}
+                />
+              </div>
             </div>
-
-            <div className="flex flex-col w-full text-left">
+            <div className="flex flex-col w-full">
               {errors.phone && (
                 <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
                   Provide valid number
@@ -120,27 +138,32 @@ function ContactForm() {
               )}
               <label
                 htmlFor="phone"
-                className="block mb-2 mt-5 text-sm font-roboto text-gray-900 dark:text-white"
+                className="block mb-2 mt-5 text-sm font-roboto text-white"
               >
                 Phone Number
               </label>
-              <Controller
-                name="phone"
-                control={control}
-                rules={{
-                  validate: (value) => isValidPhoneNumber(value),
-                }}
-                render={({ field: { onChange, value } }) => (
-                  <PhoneInput
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Phone Number"
-                    value={value}
-                    onChange={onChange}
-                    defaultCountry="CA"
-                    id="phone-input"
-                  />
-                )}
-              />
+              <div className="relative mb-4">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <MdPhone className="h-4 w-4 text-gray-100" />
+                </div>
+                <Controller
+                  name="phone"
+                  control={control}
+                  rules={{
+                    validate: (value) => isValidPhoneNumber(value),
+                  }}
+                  render={({ field: { onChange, value } }) => (
+                    <PhoneInput
+                      className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Phone Number"
+                      value={value}
+                      onChange={onChange}
+                      defaultCountry="CA"
+                      id="phone-input"
+                    />
+                  )}
+                />
+              </div>
             </div>
           </div>
           <p className="text-xl dark:text-white">
@@ -149,10 +172,10 @@ function ContactForm() {
           <div className="flex flex-col gap-56 gap-y-8 sm:flex-row">
             <label
               htmlFor="email"
-              className="ml-2 text-lg font-regular font-roboto text-gray-900 dark:text-gray-300"
+              className="ml-2 text-lg font-regular font-roboto :text-gray-300"
             >
               <input
-                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 rounded  focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 :bg-gray-700 border-gray-600"
                 type="checkbox"
                 value="email"
                 {...register("preferredContact")}
@@ -172,36 +195,42 @@ function ContactForm() {
               Phone
             </label>
           </div>
-          <div className="flex flex-col gap-y-4">
+
+          <div className="flex flex-col w-full">
+            {errors.subject && (
+              <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
+                required
+              </span>
+            )}
             <h3 className="text-2xl text-gray-550 dark:text-white font-roboto font-bold mt-7">
               What can we help you with?
             </h3>
             <label
               htmlFor="subject"
-              className="block text-sm font-roboto text-white"
+              className="block text-sm font-roboto text-white sr-only"
             >
               Subject
             </label>
-            <input
-              type="text"
-              placeholder="Subject"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              {...register("subject", {
-                required: true,
-                minLength: 5,
-                maxLength: 30,
-              })}
-            />
-            {errors.subject && (
-              <span className="absolute mt-subjectRem ml-2 text-red-500  font-roboto">
-                required
-              </span>
-            )}
+            <div className="relative mb-4 mt-5">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <MdSubject className="h-4 w-4 text-gray-100" />
+              </div>
+              <input
+                placeholder="Subject"
+                type="text"
+                className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                {...register("subject", {
+                  required: true,
+                  minLength: 5,
+                  maxLength: 30,
+                })}
+              />
+            </div>
           </div>
           <div className="flex flex-col">
             <label
               htmlFor="message"
-              className="mt-6 mb-4 block text-sm font-roboto text-gray-900 dark:text-white"
+              className="mb-4 block text-sm font-roboto text-gray-900 dark:text-white"
             >
               Message
             </label>

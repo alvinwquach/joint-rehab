@@ -32,7 +32,7 @@ type FormValues = {
   message: string;
 };
 
-const RequestAppointmentForm = () => {
+function RequestAppointmentForm() {
   const { data: serviceData } =
     useSuspenseQuery<ServicesQueryResult>(GET_SERVICES);
   const services = serviceData?.allService ?? [];
@@ -109,7 +109,7 @@ const RequestAppointmentForm = () => {
               </div>
             </div>
             <div className="flex flex-col w-full">
-              {errors.firstName && (
+              {errors.lastName && (
                 <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
                   required
                 </span>
@@ -166,9 +166,9 @@ const RequestAppointmentForm = () => {
               </div>
             </div>
             <div className="flex flex-col w-full">
-              {errors.email && (
+              {errors.phone && (
                 <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
-                  required
+                  Provide valid number
                 </span>
               )}
               <label
@@ -210,7 +210,7 @@ const RequestAppointmentForm = () => {
               className="ml-2 text-lg font-regular font-roboto :text-gray-300"
             >
               <input
-                className="w-4 h-4 text-blue-600 bg-gray-100 rounded  focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 :bg-gray-700 border-gray-600"
+                className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 rounded  focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 :bg-gray-700 border-gray-600"
                 type="checkbox"
                 value="email"
                 {...register("preferredContact")}
