@@ -25,9 +25,8 @@ type DropdownOption = {
 interface NavbarItem {
   id: number;
   name: string;
-  href: string;
+  href?: string;
   pathPrefix: string;
-  type?: string;
   dropdownOptions?: DropdownOption[];
 }
 
@@ -39,16 +38,18 @@ function Navbar({ navigation }: NavbarProps) {
   const pathName = usePathname();
 
   const requestAppointmentButton = navigation.find(
-    (item) => item.type === "button"
+    (item) => item.name === "Request Appointment"
   );
-  const otherNavItems = navigation.filter((item) => item.type !== "button");
+  const otherNavItems = navigation.filter(
+    (item) => item.name !== "Request Appointment"
+  );
 
   return (
     <Disclosure as="nav" className="bg-white shadow-lg fixed w-full top-0 z-50">
       {({ open }) => (
         <>
           <div className="mx-auto">
-            <div className="relative flex items-center justify-center h-16 w-full">
+            <div className="relative flex items-center justify-center h-20 w-full">
               {/* Mobile menu button */}
               <div className="absolute inset-y-0 right-0 flex items-center lg:hidden">
                 <DisclosureButton className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -65,7 +66,7 @@ function Navbar({ navigation }: NavbarProps) {
               <div className="flex items-center justify-evenly flex-grow w-full">
                 {/* Logo */}
                 <Link href="/">
-                  <div className="flex items-center cursor-pointer ml-2">
+                  <div className="flex items-center cursor-pointer md:ml-5 ml-0">
                     <Image
                       src="/images/logo-new.png"
                       alt="Image of company logo with the words physiotherapy and massage therapy"
@@ -81,16 +82,16 @@ function Navbar({ navigation }: NavbarProps) {
                     {navigation.map((item) => (
                       <div key={item.id} className="flex">
                         {!item.dropdownOptions ? (
-                          item.type === "button" ? (
+                          item.name === "Request Appointment" ? (
                             <Link
-                              href={item.href}
-                              className="px-3 py-2 rounded-3xl text-sm font-medium bg-blue-500 text-white hover:bg-blue-600"
+                              href={item.href ?? ""}
+                              className="px-3 py-2 rounded-3xl text-sm font-medium bg-blue-600 text-white hover:bg-blue-700"
                             >
                               {item.name}
                             </Link>
                           ) : (
                             <Menulink
-                              href={item.href}
+                              href={item.href ?? ""}
                               className={`px-3 py-2 rounded-md text-sm font-medium hover:text-primary ${
                                 pathName === item.href ? "underline" : ""
                               }`}
@@ -100,7 +101,7 @@ function Navbar({ navigation }: NavbarProps) {
                           )
                         ) : (
                           <Menu as="div" className="relative">
-                            <MenuButton className="relative flex px-3 py-2 rounded-md text-sm font-medium hover:text-primary">
+                            <MenuButton className="relative flex px-3 py-2 rounded-md text-sm font-medium hover:text-primary cursor-default">
                               {item.name}
                               <HiChevronDown
                                 className="block h-6 w-6 ml-2 text-primary"
@@ -151,14 +152,15 @@ function Navbar({ navigation }: NavbarProps) {
             leaveTo="transform opacity-0 scale-95"
           >
             <DisclosurePanel className="lg:hidden relative">
-              <div className=" absolute bg-primary w-full">
+              <div className=" absolute bg-white w-full">
                 {requestAppointmentButton && (
-                  <Link
-                    href={requestAppointmentButton.href}
-                    className="block w-full text-center px-3 py-2 ronuded-3xl text-base font-medium  hover:text-white bg-blue-600 hover:bg-blue-700"
+                  <DisclosureButton
+                    as={Link}
+                    href={requestAppointmentButton.href ?? ""}
+                    className="block w-11/12 text-center mx-auto px-3 py-2 rounded-3xl text-base font-medium hover:text-white bg-blue-700 hover:bg-blue-800 my-2"
                   >
                     {requestAppointmentButton.name}
-                  </Link>
+                  </DisclosureButton>
                 )}
                 {otherNavItems.map((item) => (
                   <div key={item.id}>
@@ -166,21 +168,21 @@ function Navbar({ navigation }: NavbarProps) {
                       <DisclosureButton
                         as="a"
                         href={item.href}
-                        className="text-white hover:bg-slate-700 hover:text-white block px-3 rounded-md text-base font-medium"
+                        className=" text-black hover:bg-blue-700 hover:text-white block px-3 rounded-md text-base font-medium"
                       >
                         {item.name}
                       </DisclosureButton>
                     ) : (
                       <>
-                        <DisclosureButton className="text-white hover:bg-slate-700 hover:text-white block px-3 rounded-md text-base font-medium">
+                        <div className="text-black block px-3 rounded-md text-base font-medium">
                           {item.name}
-                        </DisclosureButton>
+                        </div>
                         {item.dropdownOptions.map((option, index) => (
                           <DisclosureButton
                             key={index}
                             as="a"
                             href={`/${item.pathPrefix}/${option.href}`}
-                            className="block ml-4 px-2 rounded-md text-base font-medium text-white hover:bg-slate-700 hover:text-white"
+                            className="block ml-4 px-2 rounded-md text-base font-medium text-black hover:bg-blue-700 hover:text-white"
                           >
                             {option.name}
                           </DisclosureButton>
