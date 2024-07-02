@@ -3,7 +3,6 @@ export const navigation = [
   {
     id: 2,
     name: "Services",
-    href: "#",
     pathPrefix: "services",
     dropdownOptions: [
       { name: "Physiotherapy", href: "physiotherapy" },
@@ -17,7 +16,6 @@ export const navigation = [
   {
     id: 3,
     name: "Our Team",
-    href: "#",
     pathPrefix: "team",
     dropdownOptions: [
       { name: "Physiotherapist", href: "physiotherapist" },
@@ -31,6 +29,5 @@ export const navigation = [
     name: "Request Appointment",
     href: "request-appointment",
     pathPrefix: "",
-    type: "button",
   },
 ];
