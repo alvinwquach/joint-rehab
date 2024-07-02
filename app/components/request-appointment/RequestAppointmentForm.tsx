@@ -7,6 +7,7 @@ import { Service } from "@/types/Service";
 import { useSuspenseQuery } from "@apollo/client";
 import { GET_SERVICES } from "@/graphql/queries";
 import ReactDatePicker from "react-datepicker";
+import { useSearchParams } from "next/navigation";
 
 interface ServicesQueryResult {
   allService: Service[];
@@ -37,6 +38,7 @@ const RequestAppointmentForm = () => {
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm<FormValues>({
     defaultValues: {
       firstName: "",
@@ -49,6 +51,12 @@ const RequestAppointmentForm = () => {
       message: "",
     },
   });
+
+  const searchParams = useSearchParams();
+  // Get serviceName from searchParams
+  const serviceName = searchParams.get("serviceName");
+  // Set the value of subject based on serviceName
+  setValue("subject", serviceName || "");
 
   return (
     <div className="flex flex-col-reverse gap-3 md:gap-12 xl:flex-row">

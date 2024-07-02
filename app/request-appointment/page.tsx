@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Section from "../components/common/Section";
 import RequestAppointmentForm from "../components/request-appointment/RequestAppointmentForm";
 
@@ -12,7 +13,9 @@ function RequestAppointment() {
   return (
     <div>
       <Section>
-        <RequestAppointmentForm />
+        <Suspense>
+          <RequestAppointmentForm />
+        </Suspense>
       </Section>
     </div>
   );
