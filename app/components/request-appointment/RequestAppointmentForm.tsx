@@ -8,7 +8,7 @@ import { useSuspenseQuery } from "@apollo/client";
 import { GET_SERVICES } from "@/graphql/queries";
 import ReactDatePicker from "react-datepicker";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense } from "react";
 
 interface ServicesQueryResult {
   allService: Service[];
@@ -57,12 +57,7 @@ const RequestAppointmentForm = () => {
   // Get serviceName from searchParams
   const serviceName = searchParams.get("serviceName");
   // Set the value of subject based on serviceName
-  // setValue("subject", serviceName || "");
-  useEffect(() => {
-    if (serviceName) {
-      setValue("subject", serviceName);
-    }
-  }, [serviceName, setValue]);
+  setValue("subject", serviceName || "");
 
   return (
     <div className="flex flex-col-reverse gap-3 md:gap-12 xl:flex-row">
@@ -237,29 +232,31 @@ const RequestAppointmentForm = () => {
             >
               Service
             </label>
-            <select
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              {...register("subject", {
-                required: true,
-              })}
-            >
-              <option disabled selected value="">
-                Select a service
-              </option>
-              {services.map((service) => (
-                <option
-                  key={service?.name ?? "Service Name"}
-                  value={service?.name ?? ""}
-                >
-                  {service?.name ?? "Service Name"}
+            <Suspense>
+              <select
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                {...register("subject", {
+                  required: true,
+                })}
+              >
+                <option disabled selected value="">
+                  Select a service
                 </option>
-              ))}
-            </select>
-            {errors.subject && (
-              <span className="absolute mt-subjectRemAppointment ml-2 text-red-500 font-roboto">
-                required
-              </span>
-            )}
+                {services.map((service) => (
+                  <option
+                    key={service?.name ?? "Service Name"}
+                    value={service?.name ?? ""}
+                  >
+                    {service?.name ?? "Service Name"}
+                  </option>
+                ))}
+              </select>
+              {errors.subject && (
+                <span className="absolute mt-subjectRemAppointment ml-2 text-red-500 font-roboto">
+                  required
+                </span>
+              )}
+            </Suspense>
           </div>
           <div className="flex flex-col">
             <label
