@@ -172,7 +172,7 @@ function ContactForm() {
               Phone
             </label>
           </div>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-y-4">
             <h3 className="text-2xl text-gray-550 dark:text-white font-roboto font-bold mt-7">
               What can we help you with?
             </h3>
