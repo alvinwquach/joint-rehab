@@ -54,7 +54,7 @@ const RequestAppointmentForm = () => {
 
   const searchParams = useSearchParams();
   // Get serviceName from searchParams
-  const serviceName = searchParams.get("serviceName");
+  const serviceName = searchParams.get("service");
   // Set the value of subject based on serviceName
   setValue("subject", serviceName || "");
 
