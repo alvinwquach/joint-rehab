@@ -14,6 +14,7 @@ import Services from "./components/landing/Services";
 import WhyChooseUs from "./components/landing/WhyChooseUs";
 import Accessible from "./components/landing/Accessible";
 import ValueMission from "./components/landing/ValueMisson";
+import RequestAppointment from "./components/landing/RequestAppointment";
 
 interface ServicesQueryResult {
   allService: Service[];
@@ -55,6 +56,7 @@ export default function Home() {
       <Section bg={Section.Colors.Primary}>
         <Testimonials hasShowMore={true} testimonials={testimonials} />
       </Section>
+      <RequestAppointment />
     </main>
   );
 }
