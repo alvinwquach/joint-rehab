@@ -62,7 +62,7 @@ function ContactForm() {
               </label>
               <input
                 placeholder="First Name"
-                className="rounded-md text-black border border-slate-200 px-4 py-2 outline-none hover:border-secondary focus:border-primary w-full mb-2 sm:mb-0"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register("firstName", { required: true, maxLength: 30 })}
               />
             </div>
@@ -80,7 +80,7 @@ function ContactForm() {
               </label>
               <input
                 placeholder="Last Name"
-                className="rounded-md text-black border border-slate-200 px-4 py-2 outline-none hover:border-secondary focus:border-primary w-full mb-2 sm:mb-0"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register("lastName", { required: true, maxLength: 30 })}
               />
             </div>
@@ -101,7 +101,7 @@ function ContactForm() {
               <input
                 type="text"
                 placeholder="Email"
-                className="rounded-md text-black border border-slate-200 px-4 py-2 outline-none hover:border-secondary focus:border-primary w-full mb-2 sm:mb-0"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -132,7 +132,7 @@ function ContactForm() {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <PhoneInput
-                    className="rounded-md text-black border border-slate-200 px-4 py-2 outline-none hover:border-secondary focus:border-primary w-full mb-2 sm:mb-0"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Phone Number"
                     value={value}
                     onChange={onChange}
@@ -185,7 +185,7 @@ function ContactForm() {
             <input
               type="text"
               placeholder="Subject"
-              className="rounded-md text-black border border-slate-200 px-4 py-2 outline-none hover:border-secondary focus:border-primary w-full mb-2 sm:mb-0"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               {...register("subject", {
                 required: true,
                 minLength: 5,
@@ -208,7 +208,7 @@ function ContactForm() {
             <textarea
               rows={5}
               placeholder="Message"
-              className="rounded-md text-black border border-slate-200 px-4 py-2 outline-none hover:border-secondary focus:border-primary w-full mb-2 sm:mb-0"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               {...register("message", {
                 required: true,
                 minLength: 5,
@@ -225,7 +225,7 @@ function ContactForm() {
             <button
               type="submit"
               value="Send"
-              className="w-full rounded-md  bg-primary px-14 py-4 mt-4 text-sm font-button bold text-white hover:text-blue-550 hover:bg- cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+              className="w-full rounded-md bg-blue-500 px-14 py-4 mt-4 text-sm font-button font-bold text-white hover:bg-blue-600 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
             >
               Submit
             </button>
