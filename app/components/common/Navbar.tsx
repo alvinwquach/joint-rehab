@@ -27,6 +27,7 @@ interface NavbarItem {
   name: string;
   href: string;
   pathPrefix: string;
+  type?: string;
   dropdownOptions?: DropdownOption[];
 }
 
@@ -37,14 +38,19 @@ interface NavbarProps {
 function Navbar({ navigation }: NavbarProps) {
   const pathName = usePathname();
 
+  const requestAppointmentButton = navigation.find(
+    (item) => item.type === "button"
+  );
+  const otherNavItems = navigation.filter((item) => item.type !== "button");
+
   return (
     <Disclosure as="nav" className="bg-white shadow-lg fixed w-full top-0 z-50">
       {({ open }) => (
         <>
-          <div className="mx-auto ">
-            <div className="relative flex items-center justify-center h-16 w-full ">
+          <div className="mx-auto">
+            <div className="relative flex items-center justify-center h-16 w-full">
               {/* Mobile menu button */}
-              <div className="absolute inset-y-0 right-0 flex items-center lg:hidden  justify-self-start">
+              <div className="absolute inset-y-0 right-0 flex items-center lg:hidden">
                 <DisclosureButton className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -56,7 +62,7 @@ function Navbar({ navigation }: NavbarProps) {
               </div>
 
               {/* Main */}
-              <div className=" flex items-center justify-evenly flex-grow w-full">
+              <div className="flex items-center justify-evenly flex-grow w-full">
                 {/* Logo */}
                 <Link href="/">
                   <div className="flex items-center cursor-pointer ml-2">
@@ -75,14 +81,23 @@ function Navbar({ navigation }: NavbarProps) {
                     {navigation.map((item) => (
                       <div key={item.id} className="flex">
                         {!item.dropdownOptions ? (
-                          <Menulink
-                            href={item.href}
-                            className={`px-3 py-2 rounded-md text-sm font-medium hover:text-primary ${
-                              pathName === item.href ? "underline" : ""
-                            }`}
-                          >
-                            {item.name}
-                          </Menulink>
+                          item.type === "button" ? (
+                            <Link
+                              href={item.href}
+                              className="px-3 py-2 rounded-3xl text-sm font-medium bg-blue-500 text-white hover:bg-blue-600"
+                            >
+                              {item.name}
+                            </Link>
+                          ) : (
+                            <Menulink
+                              href={item.href}
+                              className={`px-3 py-2 rounded-md text-sm font-medium hover:text-primary ${
+                                pathName === item.href ? "underline" : ""
+                              }`}
+                            >
+                              {item.name}
+                            </Menulink>
+                          )
                         ) : (
                           <Menu as="div" className="relative">
                             <MenuButton className="relative flex px-3 py-2 rounded-md text-sm font-medium hover:text-primary">
@@ -136,12 +151,19 @@ function Navbar({ navigation }: NavbarProps) {
             leaveTo="transform opacity-0 scale-95"
           >
             <DisclosurePanel className="lg:hidden relative">
-              <div className="px-2 pt-2 pb-3 absolute bg-primary w-full">
-                {navigation.map((item) => (
+              <div className=" absolute bg-primary w-full">
+                {requestAppointmentButton && (
+                  <Link
+                    href={requestAppointmentButton.href}
+                    className="block w-full text-center px-3 py-2 ronuded-3xl text-base font-medium  hover:text-white bg-blue-600 hover:bg-blue-700"
+                  >
+                    {requestAppointmentButton.name}
+                  </Link>
+                )}
+                {otherNavItems.map((item) => (
                   <div key={item.id}>
                     {!item.dropdownOptions ? (
                       <DisclosureButton
-                        key={item.name}
                         as="a"
                         href={item.href}
                         className="text-white hover:bg-slate-700 hover:text-white block px-3 rounded-md text-base font-medium"
@@ -150,10 +172,7 @@ function Navbar({ navigation }: NavbarProps) {
                       </DisclosureButton>
                     ) : (
                       <>
-                        <DisclosureButton
-                          key={item.name}
-                          className="text-white hover:bg-slate-700 hover:text-white block px-3 rounded-md text-base font-medium"
-                        >
+                        <DisclosureButton className="text-white hover:bg-slate-700 hover:text-white block px-3 rounded-md text-base font-medium">
                           {item.name}
                         </DisclosureButton>
                         {item.dropdownOptions.map((option, index) => (
