@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}": types.ServiceFragmentDoc,
+    "fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nfragment serviceSlug on Service {\n  name\n  slug {\n    current\n  }\n}\n\nquery ServiceBySlug($slug: String!) {\n  allService(where: {slug: {current: {eq: $slug}}}) {\n    ...serviceSlug\n  }\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}": types.ServiceFragmentDoc,
     "fragment team on Team {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  jobTitle\n  team\n  descriptionRaw\n}\n\nquery allTeams {\n  allTeam {\n    ...team\n  }\n}": types.TeamFragmentDoc,
     "fragment testimonial on Testimonial {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  testimonial\n}\n\nquery allTestimonials {\n  allTestimonial {\n    ...testimonial\n  }\n}": types.TestimonialFragmentDoc,
     "fragment ashgroveMedicalCenterLocation on AshgroveMedicalCenterLocation {\n  address\n  addresslinen\n  phone\n  fax\n  email\n  sunday\n  monday\n  tuesday\n  wednesday\n  thursday\n  friday\n  saturday\n}\n\nquery allAshgroveMedicalCenterLocations {\n  allAshgroveMedicalCenterLocation {\n    ...ashgroveMedicalCenterLocation\n  }\n}": types.AshgroveMedicalCenterLocationFragmentDoc,
@@ -37,7 +37,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}"): (typeof documents)["fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}"];
+export function graphql(source: "fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nfragment serviceSlug on Service {\n  name\n  slug {\n    current\n  }\n}\n\nquery ServiceBySlug($slug: String!) {\n  allService(where: {slug: {current: {eq: $slug}}}) {\n    ...serviceSlug\n  }\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}"): (typeof documents)["fragment service on Service {\n  image {\n    asset {\n      url\n    }\n  }\n  name\n  slug {\n    current\n  }\n  descriptionRaw\n}\n\nfragment serviceSlug on Service {\n  name\n  slug {\n    current\n  }\n}\n\nquery ServiceBySlug($slug: String!) {\n  allService(where: {slug: {current: {eq: $slug}}}) {\n    ...serviceSlug\n  }\n}\n\nquery allServices {\n  allService {\n    ...service\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
