@@ -49,7 +49,7 @@ function Navbar({ navigation }: NavbarProps) {
       {({ open }) => (
         <>
           <div className="mx-auto">
-            <div className="relative flex items-center justify-center h-20 w-full">
+            <div className="relative flex items-center justify-center h-16 w-full">
               {/* Mobile menu button */}
               <div className="absolute inset-y-0 right-0 flex items-center lg:hidden">
                 <DisclosureButton className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -71,7 +71,7 @@ function Navbar({ navigation }: NavbarProps) {
                       src="/images/logo-new.png"
                       alt="Image of company logo with the words physiotherapy and massage therapy"
                       width={150}
-                      height={150}
+                      height={100}
                       quality={100}
                     />
                   </div>
