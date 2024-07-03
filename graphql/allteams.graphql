@@ -5,11 +5,11 @@ fragment team on Team {
     }
   }
   name
+
   jobTitle
   team
   descriptionRaw
 }
-
 query allTeams {
   allTeam {
     ...team

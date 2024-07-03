@@ -19,10 +19,10 @@ import { HiMenu, HiX, HiChevronDown } from "react-icons/hi";
 
 type DropdownOption = {
   name: string;
-  href: string;
+  slug: string;
 };
 
-interface NavbarItem {
+export interface NavbarItem {
   id: number;
   name: string;
   href?: string;
@@ -122,7 +122,7 @@ function Navbar({ navigation }: NavbarProps) {
                                   <MenuItem key={index}>
                                     {({ active }) => (
                                       <Menulink
-                                        href={`/${item.pathPrefix}/${option.href}`}
+                                        href={`/${item.pathPrefix}/${option.slug}`}
                                         className={`${
                                           active ? "bg-slate-100" : ""
                                         } block px-4 py-2 text-base text-gray-700`}
@@ -181,7 +181,7 @@ function Navbar({ navigation }: NavbarProps) {
                           <DisclosureButton
                             key={index}
                             as="a"
-                            href={`/${item.pathPrefix}/${option.href}`}
+                            href={`/${item.pathPrefix}/${option.slug}`}
                             className="block ml-4 px-2 rounded-md text-base font-medium text-black hover:bg-blue-700 hover:text-white"
                           >
                             {option.name}

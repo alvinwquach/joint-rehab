@@ -22,6 +22,7 @@ export const GET_TESTIMONIALS = gql`
   }
 `;
 
+
 const SERVICE_FRAGMENT = gql`
   fragment service on Service {
     image {
@@ -37,21 +38,21 @@ const SERVICE_FRAGMENT = gql`
   }
 `;
 
-export const GET_SERVICES = gql`
-  ${SERVICE_FRAGMENT}
-
-  query allServices {
-    allService {
-      ...service
-    }
-  }
-`;
-
 export const GET_SPECIFIC_SERVICE = gql`
   ${SERVICE_FRAGMENT}
 
   query specificService($slug: String!) {
     allService(where: { slug: { current: { eq: $slug } } }) {
+      ...service
+    }
+  }
+`;
+
+export const GET_SERVICES = gql`
+  ${SERVICE_FRAGMENT}
+
+  query allServices {
+    allService {
       ...service
     }
   }
