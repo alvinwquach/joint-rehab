@@ -41,7 +41,6 @@ export default function Home() {
         <AboutUs />
         <Accessible />
       </Section>
-
       <Section bg={Section.Colors.Primary} className="!py-16">
         <Values />
       </Section>

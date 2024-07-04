@@ -22,7 +22,7 @@ function ValueMission() {
           Mission
         </h5>
         <p className="text-lg text-black text-center">
-          To provide the best possible care to maximize each patient's
+          To provide the best possible care to maximize each patient&apos;s
           rehabilitation potential.
         </p>
       </div>

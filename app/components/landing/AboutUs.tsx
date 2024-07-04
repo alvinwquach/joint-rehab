@@ -36,11 +36,11 @@ const AboutUs = () => {
         achieve their rehabilitation goals, while enhancing their quality of
         life.
       </div>
-      <div className="mt-6 text-xl text-black font-light">
+      {/* <div className="mt-6 text-xl text-black font-light">
         We have two locations in the heart of Markham. Both sites have ample,
         free parking and are wheelchair accessible. We offer appointments seven
         days a week.
-      </div>
+      </div> */}
     </>
   );
 };
