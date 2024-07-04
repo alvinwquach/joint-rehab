@@ -350,9 +350,9 @@ function RequestAppointmentForm() {
             <button
               type="submit"
               value="Send"
-              className="w-full rounded-md bg-blue-500 px-14 py-4 mt-4 text-sm font-button font-bold text-white hover:bg-blue-600 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+              className="rounded-md bg-blue-700 px-14 py-4 mt-4 text-sm font-button font-bold text-white  hover:bg-gray-700  cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
             >
-              Submit
+              SUBMIT
             </button>
           </div>
         </div>
