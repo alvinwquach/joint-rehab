@@ -39,7 +39,9 @@ export default function Home() {
       <Section bg={Section.Colors.Light} className="py-16">
         <LinksCarousel />
         <AboutUs />
+        <Accessible />
       </Section>
+
       <Section bg={Section.Colors.Primary} className="!py-16">
         <Values />
       </Section>
