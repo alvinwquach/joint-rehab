@@ -1,10 +1,11 @@
-import { PortableText } from "next-sanity";
-import Image from "next/image";
-import Section from "@/app/components/common/Section";
-import { GET_SPECIFIC_SERVICE } from "@/graphql/queries";
-import { getClient } from "@/app/lib/apollo-client";
-import { formatTeamAndServiceName } from "@/util/formatTeamAndServiceName";
 import Link from "next/link";
+import { PortableText } from "next-sanity";
+import Section from "@/app/components/common/Section";
+import Hero from "@/app/components/common/Hero";
+import { formatTeamAndServiceName } from "@/util/formatTeamAndServiceName";
+import { rubik_scribble } from "@/util/fonts";
+import { getClient } from "@/app/lib/apollo-client";
+import { GET_SPECIFIC_SERVICE } from "@/graphql/queries";
 
 interface ServiceProps {
   params: {
@@ -37,48 +38,55 @@ async function Service({ params }: ServiceProps) {
   if (!service) return <p>Service not found</p>;
 
   return (
-    <Section>
-      <div className="flex flex-col md:flex-row pb-12 md:pb-0">
-        <div className="w-full flex justify-center">
-          <div className="w-2/3">
-            <Image
-              src={service.image.asset.url}
-              alt={`Image of ${service.name}`}
-              className="object-cover rounded-lg drop-shadow-md transform transition-all duration-300"
-              width={1200}
-              height={600}
-              priority
-            />
+    <>
+      <Hero
+        title={
+          <>
+            <span className={`${rubik_scribble.className}`}>
+              {service.name}
+            </span>{" "}
+          </>
+        }
+        description={`This is just one of many services that we provide. Let us help.`}
+        desktopClassName="bg-contain"
+        imageClassName="object-cover object-top"
+        image={{
+          mobile: service.image.asset.url,
+          desktop: service.image.asset.url,
+        }}
+      />
+      <Section>
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-4">
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              {service.name}
+            </h1>
+
+            <Link
+              href={{
+                pathname: "/request-appointment",
+                query: { service: service.name },
+              }}
+              className="mt-4 md:mt-0 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-primary-dark transition-all duration-300"
+            >
+              Request Appointment
+            </Link>
           </div>
-        </div>
-      </div>
-      <div className="flex-1 flex flex-col justify-center">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-4">
-          <h2 className="text-3xl sm:text-4xl text-primary font-bold">
-            {service.name}
-          </h2>
-          <Link
-            href={{
-              pathname: "/request-appointment",
-              query: { service: service.name },
+          <PortableText
+            value={service.descriptionRaw}
+            components={{
+              block: {
+                normal: ({ children }) => (
+                  <p className="mb-4 text-lg sm:text-xl text-gray-200 font-light">
+                    {children}
+                  </p>
+                ),
+              },
             }}
-            className="mt-4 md:mt-0 bg-primary text-white font-bold py-2 px-4 rounded hover:bg-primary-dark transition-all duration-300"
-          >
-            Request Appointment
-          </Link>
+          />
         </div>
-        <PortableText
-          value={service.descriptionRaw}
-          components={{
-            block: {
-              normal: ({ children }) => (
-                <p className="mb-4 font-light text-gray-200">{children}</p>
-              ),
-            },
-          }}
-        />
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }
 

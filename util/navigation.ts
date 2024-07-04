@@ -82,7 +82,7 @@ export const navigation: NavbarItem[] = [
   },
   { id: 5, name: "Contact", href: "/contact", pathPrefix: "" },
   {
-    id: 5,
+    id: 6,
     name: "Request Appointment",
     href: "request-appointment",
     pathPrefix: "",

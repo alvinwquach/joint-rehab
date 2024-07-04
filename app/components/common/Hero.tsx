@@ -1,18 +1,21 @@
 import React from "react";
 import Section from "./Section";
-import { StaticImageData } from "next/image";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import cn from "clsx";
 
 type HeroProps = {
   image: {
-    mobile?: StaticImageData;
-    desktop?: StaticImageData;
+    mobile?: string | StaticImageData;
+    desktop?: string | StaticImageData;
   };
   title: React.ReactNode;
   description: React.ReactNode;
   desktopClassName?: string;
   imageClassName?: string;
+};
+
+const getImageSrc = (image?: string | StaticImageData) => {
+  return typeof image === "string" ? image : image?.src;
 };
 
 function Hero({
@@ -30,7 +33,9 @@ function Hero({
           desktopClassName
         )}
         style={{
-          backgroundImage: image.desktop ? `url(${image.desktop.src})` : "",
+          backgroundImage: image.desktop
+            ? `url(${getImageSrc(image.desktop)})`
+            : "",
         }}
       >
         <Section
@@ -54,12 +59,13 @@ function Hero({
         {image.mobile && (
           <div className="h-[420px] w-full relative flex-1">
             <Image
-              src={image.mobile}
+              src={getImageSrc(image.mobile) as string}
               className={cn("object-cover object-center", imageClassName)}
               placeholder="blur"
-              alt="hero image"
+              alt={"hero image"}
               fill={true}
               loading="lazy"
+              blurDataURL={getImageSrc(image.mobile)}
             />
           </div>
         )}
@@ -68,7 +74,7 @@ function Hero({
           <h2 className="text-3xl tracking-tight font-title uppercase text-center">
             {title}
           </h2>
-          <p className="mt-4 text-xl  font-light text-center">{description}</p>
+          <p className="mt-4 text-xl font-light text-center">{description}</p>
         </div>
       </div>
     </>
