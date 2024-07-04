@@ -49,7 +49,6 @@ export function transformServices(
 
   return servicesDropdownOptions;
 }
-
 const { data: servicesData } = await getClient().query({
   query: GET_SERVICES,
 });
@@ -84,7 +83,7 @@ export const navigation: NavbarItem[] = [
   {
     id: 6,
     name: "Request Appointment",
-    href: "request-appointment",
+    href: "/request-appointment",
     pathPrefix: "",
   },
 ];
