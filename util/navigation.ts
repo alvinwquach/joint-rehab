@@ -74,7 +74,13 @@ export const navigation: NavbarItem[] = [
       { name: "Administration", slug: "administration" },
     ],
   },
-  { id: 4, name: "Contact", href: "/contact", pathPrefix: "" },
+  {
+    id: 4,
+    name: "Cancellation Policy",
+    href: "/cancellation-policy",
+    pathPrefix: "",
+  },
+  { id: 5, name: "Contact", href: "/contact", pathPrefix: "" },
   {
     id: 5,
     name: "Request Appointment",
