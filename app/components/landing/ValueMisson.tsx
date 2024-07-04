@@ -1,10 +1,4 @@
-import React from "react";
-import {
-  FaMedal,
-  FaHandHoldingHeart,
-  FaBullseye,
-  FaHandsHelping,
-} from "react-icons/fa";
+import { FaMedal, FaBullseye } from "react-icons/fa";
 
 function ValueMission() {
   return (
