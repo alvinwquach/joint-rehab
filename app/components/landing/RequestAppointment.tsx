@@ -5,7 +5,7 @@ function RequestAppointment() {
   return (
     <Section>
       <div className="flex items-center justify-evenly  ">
-        <div className="text-4xl font-medium text-white ">
+        <div className="md:text-4xl text-2xl font-medium text-white ">
           Request your appointment today.
         </div>
         <Link
