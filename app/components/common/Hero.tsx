@@ -59,6 +59,7 @@ function Hero({
               placeholder="blur"
               alt="hero image"
               fill={true}
+              loading="lazy"
             />
           </div>
         )}
