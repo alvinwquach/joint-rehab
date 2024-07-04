@@ -1,41 +1,39 @@
 import React from "react";
-import { FaCheckCircle } from "react-icons/fa";
+import {
+  FaMedal,
+  FaHandHoldingHeart,
+  FaBullseye,
+  FaHandsHelping,
+} from "react-icons/fa";
 
-function ValueMisson() {
+function ValueMission() {
   return (
-    <div className="mt-8 flex flex-col justify-between items-start md:flex-row gap-y-4">
-      <div className="flex items-center">
-        <div>
-          <FaCheckCircle
-            className="text-green-500 mr-2 mb-2 inline-block"
-            size={24}
-          />
-          <h3 className="text-xl font-bold sm:text-2xl inline text-black">
-            Value
-          </h3>
-          <p className="text-xl text-black">
-            To be a center of excellence in the provision of physiotherapy
-            services.
-          </p>
-        </div>
+    <div className="flex flex-col items-center justify-center gap-x-8 md:flex-row md:justify-center">
+      {/* Value Card */}
+      <div className="w-full max-w-sm sm:p-10 flex flex-col items-center justify-center my-8">
+        <FaMedal className="text-yellow-500 mb-4 inline-block" size={48} />
+        <h5 className="mb-4 text-xl font-medium text-black text-center">
+          Value
+        </h5>
+        <p className="text-lg text-black text-center">
+          To be a center of excellence in the provision of physiotherapy
+          services.
+        </p>
       </div>
-      <div className="flex items-center">
-        <div>
-          <FaCheckCircle
-            className="text-green-500 mr-2 mb-2 inline-block"
-            size={24}
-          />
-          <h3 className="text-xl font-bold sm:text-2xl inline text-black">
-            Mission
-          </h3>
-          <p className="text-xl text-black">
-            To provide the best possible care to maximize each patient’s
-            rehabilitation potential.
-          </p>
-        </div>
+
+      {/* Mission Card */}
+      <div className="w-full max-w-sm sm:p-10 flex flex-col items-center justify-center my-8">
+        <FaBullseye className="text-blue-500 mb-4 inline-block" size={48} />
+        <h5 className="mb-4 text-xl font-medium text-black text-center">
+          Mission
+        </h5>
+        <p className="text-lg text-black text-center">
+          To provide the best possible care to maximize each patient's
+          rehabilitation potential.
+        </p>
       </div>
     </div>
   );
 }
 
-export default ValueMisson;
+export default ValueMission;

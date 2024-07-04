@@ -40,14 +40,11 @@ export default function Home() {
         <LinksCarousel />
         <AboutUs />
       </Section>
-      <Section className="!py-16">
-        <Accessible />
+      <Section bg={Section.Colors.Primary} className="!py-16">
+        <Values />
       </Section>
       <Section bg={Section.Colors.Light} className="py-16">
         <ValueMission />
-      </Section>
-      <Section bg={Section.Colors.Primary} className="!py-16">
-        <Values />
       </Section>
       <WhyChooseUs />
       <Section bg={Section.Colors.Light} className="py-16">
