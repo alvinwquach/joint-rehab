@@ -1,7 +1,4 @@
-import React from "react";
 import Image from "next/image";
-
-// Import images
 import compassionate from "../../../public/images/landing/compassionate.png";
 import professional from "../../../public/images/landing/professional.png";
 import rehabilitation from "../../../public/images/landing/rehabilitation.png";
@@ -56,20 +53,21 @@ function WhyChooseUs() {
           key={index}
           className={`flex flex-col md:flex-row ${
             index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-          } items-center w-full`}
+          } items-center w-full `}
         >
-          <div className="flex-1 max-w-full md:max-w-1/2">
+          <div className="w-full md:w-1/2">
             <Image
               src={image.src}
               alt={image.alt}
+              sizes="100vw"
               style={{
                 width: "100%",
                 height: "auto",
               }}
             />
           </div>
-          <div className="flex-1 max-w-full md:max-w-1/2 text-center text-white">
-            {image.text}
+          <div className="w-full md:w-1/2 p-4">
+            <p className="text-lg md:text-xl text-white">{image.text}</p>
           </div>
         </div>
       ))}
