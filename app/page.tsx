@@ -48,6 +48,7 @@ export default function Home() {
         <ValueMission />
       </Section>
       <WhyChooseUs />
+
       <Section bg={Section.Colors.Light} className="py-16">
         <Services services={services} />
       </Section>
