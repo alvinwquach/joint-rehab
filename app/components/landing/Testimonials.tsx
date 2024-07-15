@@ -53,7 +53,7 @@ function Testimonials({
     <>
       <div className="relative">
         <div className="flex pb-16 flex-col items-center justify-center">
-          <h2 className="text-3xl sm:text-4xl text-center uppercase">
+          <h2 className="text-3xl sm:text-4xl text-center text-white uppercase">
             Hear from our <strong>clients</strong>
           </h2>
         </div>

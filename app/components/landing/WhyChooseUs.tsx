@@ -68,7 +68,7 @@ function WhyChooseUs() {
               }}
             />
           </div>
-          <div className="flex-1 max-w-full md:max-w-1/2 text-center">
+          <div className="flex-1 max-w-full md:max-w-1/2 text-center text-white">
             {image.text}
           </div>
         </div>

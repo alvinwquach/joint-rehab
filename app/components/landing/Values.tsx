@@ -16,7 +16,7 @@ function Values() {
         <h2 className="capitalize text-white text-4xl sm:text-5xl font-roboto font-bold text-center">
           Our Values
         </h2>
-        <div className="flex flex-col w-full justify-between md:flex-row md:max-w-3xl max-w-xs gap-6">
+        <div className="flex flex-col w-full justify-between md:flex-row md:max-w-3xl max-w-xs gap-6 text-white">
           <InfoIcon icon={<FaUserFriends />} text="Compassion" />
           <InfoIcon icon={<FaHandshake />} text="Respect" />
           <InfoIcon icon={<FaHeart />} text="Integrity" />
