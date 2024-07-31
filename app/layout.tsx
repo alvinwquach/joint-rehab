@@ -43,7 +43,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <ApolloWrapper>
           <Navbar navigation={navigation} />
-          <main className="bg-slate-800">{children}</main>
+          <main className="bg-background">{children}</main>
           <Footer
             markhamPlazaLocation={markhamPlazaData}
             ashgroveMedicalCenterLocation={ashgroveData}

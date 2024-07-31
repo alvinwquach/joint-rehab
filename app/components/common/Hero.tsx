@@ -29,7 +29,7 @@ function Hero({
     <>
       <div
         className={cn(
-          "hidden lg:block h-[420px] w-full bg-contain bg-no-repeat bg-right-top bg-primary border-b border-zinc-700",
+          "hidden lg:block h-[420px] w-full bg-fifth bg-contain bg-no-repeat bg-right-top text-white border-b border-zinc-700",
           desktopClassName
         )}
         style={{
@@ -50,7 +50,7 @@ function Hero({
             <h1 className="tracking-tight text-5xl font-title uppercase">
               {title}
             </h1>
-            <p className="mt-8 text-xl text-white font-light">{description}</p>
+            <p className="mt-8 text-xl text-white">{description}</p>
           </div>
         </Section>
       </div>
