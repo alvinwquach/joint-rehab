@@ -1,19 +1,17 @@
-"use client";
-
-import { useSuspenseQuery } from "@apollo/client";
+import { getClient } from "./lib/apollo-client";
+import { GET_TESTIMONIALS, GET_SERVICES } from "@/graphql/queries";
+import { Testimonial } from "@/types/Testimonial";
+import { Service } from "@/types/Service";
 import Section from "./components/common/Section";
 import LandingHero from "./components/landing/LandingHero";
 import LinksCarousel from "./components/landing/LinksCarousel";
 import AboutUs from "./components/landing/AboutUs";
-import Values from "./components/landing/Values";
-import { Testimonial } from "@/types/Testimonial";
-import { Service } from "@/types/Service";
-import { GET_TESTIMONIALS, GET_SERVICES } from "@/graphql/queries";
-import Testimonials from "./components/landing/Testimonials";
-import Services from "./components/landing/Services";
-import WhyChooseUs from "./components/landing/WhyChooseUs";
 import Accessible from "./components/landing/Accessible";
+import Values from "./components/landing/Values";
 import ValueMission from "./components/landing/ValueMisson";
+import WhyChooseUs from "./components/landing/WhyChooseUs";
+import Services from "./components/landing/Services";
+import Testimonials from "./components/landing/Testimonials";
 import RequestAppointment from "./components/landing/RequestAppointment";
 
 interface ServicesQueryResult {
@@ -24,11 +22,15 @@ interface TestimonialsQueryResult {
   allTestimonial: Testimonial[];
 }
 
-export default function Home() {
+export default async function Home() {
   const { data: testimonialData } =
-    useSuspenseQuery<TestimonialsQueryResult>(GET_TESTIMONIALS);
-  const { data: serviceData } =
-    useSuspenseQuery<ServicesQueryResult>(GET_SERVICES);
+    await getClient().query<TestimonialsQueryResult>({
+      query: GET_TESTIMONIALS,
+    });
+
+  const { data: serviceData } = await getClient().query<ServicesQueryResult>({
+    query: GET_SERVICES,
+  });
 
   const testimonials = testimonialData?.allTestimonial ?? [];
   const services = serviceData?.allService ?? [];
