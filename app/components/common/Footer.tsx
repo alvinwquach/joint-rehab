@@ -107,7 +107,7 @@ function Footer({
                     <span>{markhamLocation.sunday}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Monday:</span>
+                    <span>Monday</span>
                     <span>{markhamLocation.monday}</span>
                   </li>
                   <li className="flex justify-between">
