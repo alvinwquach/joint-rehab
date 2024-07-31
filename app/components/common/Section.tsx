@@ -13,7 +13,8 @@ const Colors = {
   Light: "bg-white",
   Primary: "bg-blue-500",
   Fifth: "bg-fifth",
-  Dark: "bg-zinc-900",
+  Dark: "bg-zinc-800",
+  Fourth: "bg-fourth",
 };
 
 function Section({

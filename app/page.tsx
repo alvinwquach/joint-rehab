@@ -54,7 +54,7 @@ export default async function Home() {
       <Section bg={Section.Colors.Light} className="py-16">
         <Services services={services} />
       </Section>
-      <Section bg={Section.Colors.Primary}>
+      <Section bg={Section.Colors.Fourth}>
         <Testimonials hasShowMore={true} testimonials={testimonials} />
       </Section>
       <RequestAppointment />
