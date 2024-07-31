@@ -11,7 +11,7 @@ interface SectionProps {
 
 const Colors = {
   Light: "bg-white",
-  Primary: "bg-fourth",
+  Primary: "bg-blue-500",
   Fifth: "bg-fifth",
   Dark: "bg-zinc-900",
 };
