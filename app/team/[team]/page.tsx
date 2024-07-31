@@ -107,21 +107,21 @@ async function Team({ params }: TeamProps) {
           {teamInformation.map((member) => (
             <div
               key={member.name}
-              className="bg-slate-800 flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-third"
+              className="flex flex-col md:flex-row pb-12 [&:not(:first-child)]:pt-12 [&:not(:last-child)]:border-b border-b-third"
             >
               <div className="relative flex justify-center md:justify-start w-64 h-64 md:w-48 md:h-48 mx-auto md:mx-0">
                 <Image
                   src={member.image?.asset?.url ?? ""}
                   alt={`Headshot of ${member.name}` ?? "Member image"}
-                  className="rounded-full border-2 border-third drop-shadow-md transform transition-all duration-300 hover:scale-105 overflow-hidden object-cover"
+                  className="rounded-full border-2 border-fifth drop-shadow-md transform transition-all duration-300 hover:scale-105 overflow-hidden object-cover"
                   fill={true}
                 />
               </div>
               <div className="pt-8 md:pt-0 flex-1 flex flex-col pl-0 md:pl-16">
-                <h2 className="text-xl sm:text-2xl text-white font-bold mb-1 text-center sm:text-left">
+                <h2 className="text-xl sm:text-2xl text-black font-bold mb-1 text-center sm:text-left">
                   {member.name}
                 </h2>
-                <h3 className=" mb-4 text-center sm:text-left">
+                <h3 className=" mb-4 text-center sm:text-left text-black">
                   {member.jobTitle}
                 </h3>
                 <PortableText
@@ -129,7 +129,7 @@ async function Team({ params }: TeamProps) {
                   components={{
                     block: {
                       normal: ({ children }) => (
-                        <p className="mb-4">{children}</p>
+                        <p className="mb-4 text-black">{children}</p>
                       ),
                     },
                   }}
