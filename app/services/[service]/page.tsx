@@ -57,17 +57,13 @@ async function Service({ params }: ServiceProps) {
       />
       <Section>
         <div className="flex-1 flex flex-col justify-center">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-4">
-            {/* <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              {service.name}
-            </h1> */}
-          </div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-4"></div>
           <PortableText
             value={service.descriptionRaw}
             components={{
               block: {
                 normal: ({ children }) => (
-                  <p className="mb-4 text-lg sm:text-xl text-gray-200 font-light">
+                  <p className="mb-4 text-lg sm:text-xl text-black font-light">
                     {children}
                   </p>
                 ),
@@ -80,7 +76,7 @@ async function Service({ params }: ServiceProps) {
             pathname: "/request-appointment",
             query: { service: service.name },
           }}
-          className="mt-4 md:mt-0 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded hover:bg-primary-dark transition-all duration-300"
+          className="mt-4 md:mt-0 bg-third hover:bg-primary text-white font-bold py-2 px-4 rounded hover:bg-primary-dark transition-all duration-300"
         >
           Request Appointment
         </Link>
