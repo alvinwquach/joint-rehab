@@ -11,8 +11,8 @@ export const metadata = {
 
 function CancellationPolicy() {
   return (
-    <Section className="my-16">
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-black">
+    <Section>
+      <h1 className="mt-12 text-3xl font-extrabold tracking-tight sm:text-4xl text-black">
         Cancellation Policy
       </h1>
       <div className="h-6" />

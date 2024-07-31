@@ -16,8 +16,10 @@ type ClauseProps = {
 function Clause({ title, children }: ClauseProps) {
   return (
     <>
-      <h2 className="mt-12 text-xl font-bold sm:text-2xl">{title}</h2>
-      <div className="mt-4 text-xl text-gray-200 font-light">{children}</div>
+      <h2 className="mt-12 text-xl font-bold sm:text-2xl text-black">
+        {title}
+      </h2>
+      <div className="mt-4 text-xl  text-black font-light">{children}</div>
     </>
   );
 }
@@ -25,7 +27,7 @@ function Clause({ title, children }: ClauseProps) {
 function PrivacyPolicy() {
   return (
     <Section>
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <h1 className="mt-12 text-3xl font-extrabold tracking-tight sm:text-4xl text-black">
         Privacy Policy
       </h1>
       <div className="h-6" />
