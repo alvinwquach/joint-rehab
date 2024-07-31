@@ -11,7 +11,7 @@ import InfoIcon from "./InfoIcon";
 
 function Values() {
   return (
-    <div className="w-full flex bg-blue-500">
+    <div className="w-full flex ">
       <div className="max-w-screen-xl m-auto w-10/12 flex flex-col items-center gap-20">
         <h2 className="capitalize text-white text-4xl sm:text-5xl font-roboto font-bold text-center">
           Our Values
