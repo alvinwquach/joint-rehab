@@ -35,39 +35,8 @@ function Footer({
   };
 
   return (
-    <footer className="bg-white text-black py-12">
+    <footer className="bg-current bg-fourth text-white py-12">
       <div className="container mx-auto px-4">
-        {/* Company Logo and Social Icons */}
-        <div className="flex justify-between items-center mb-8">
-          <Link href="/">
-            <Image
-              src="/images/logo-new.png"
-              alt="Image of company logo with the words physiotherapy and massage therapy"
-              width={150}
-              height={100}
-              quality={100}
-            />
-          </Link>
-          <div className="flex gap-x-4">
-            <a
-              href="https://www.facebook.com/people/Joint-Rehab/100054544805277/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open link to Joint Rehab Facebook"
-            >
-              <CiFacebook className="text-4xl hover:text-primary" />
-            </a>
-            <a
-              href="https://www.instagram.com/jointrehab/?hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open link to Joint Rehab Instagram"
-            >
-              <CiInstagram className="text-4xl hover:text-primary" />
-            </a>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Markham Plaza Location */}
           {markhamLocation && (
@@ -86,7 +55,7 @@ function Footer({
               <div className="mb-6">
                 <h3 className="text-xl font-bold mt-4">Markham Plaza</h3>
                 <div className="flex items-center mb-2">
-                  <FaMapMarkerAlt className="mr-2 inline-block text-black" />
+                  <FaMapMarkerAlt className="mr-2 inline-block text-white" />
                   <a
                     className="underline hover:no-underline"
                     target="_blank"
@@ -97,7 +66,7 @@ function Footer({
                   </a>
                 </div>
                 <div className="flex items-center mb-2">
-                  <FaPhone className="mr-2 text-black" />
+                  <FaPhone className="mr-2 text-white" />
                   <a
                     className="underline hover:no-underline"
                     href={`tel:${markhamLocation.phone}`}
@@ -106,7 +75,7 @@ function Footer({
                   </a>
                 </div>
                 <div className="flex items-center mb-2">
-                  <FaFax className="mr-2 text-black" />
+                  <FaFax className="mr-2 text-white" />
                   <a
                     className="underline hover:no-underline"
                     href={`fax:${markhamLocation.fax}`}
@@ -116,9 +85,9 @@ function Footer({
                 </div>
                 <div className="flex items-center mb-2">
                   {isEnvelopeIconClosed ? (
-                    <RxEnvelopeOpen className="mr-2 block h-4 w-4 text-black" />
+                    <RxEnvelopeOpen className="mr-2 block h-4 w-4 text-white" />
                   ) : (
-                    <RxEnvelopeClosed className="mr-2 block h-4 w-4 text-black" />
+                    <RxEnvelopeClosed className="mr-2 block h-4 w-4 text-white" />
                   )}
                   <a
                     className="underline text-lg italic hover:no-underline"
@@ -131,34 +100,34 @@ function Footer({
                 </div>
               </div>
               <div>
-                <h2 className="text-xl font-bold mb-4">Hours of Operation:</h2>
-                <ul className="flex flex-col gap-2 font-roboto text-black">
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Sunday:</span>
+                <h2 className="text-xl font-bold mb-4">Hours</h2>
+                <ul className="flex flex-col gap-2 font-roboto text-white">
+                  <li className="flex justify-between">
+                    <span>Sunday</span>
                     <span>{markhamLocation.sunday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
+                  <li className="flex justify-between">
                     <span>Monday:</span>
                     <span>{markhamLocation.monday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Tuesday:</span>
+                  <li className="flex justify-between">
+                    <span>Tuesday</span>
                     <span>{markhamLocation.tuesday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Wednesday:</span>
+                  <li className="flex justify-between">
+                    <span>Wednesday</span>
                     <span>{markhamLocation.wednesday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Thursday:</span>
+                  <li className="flex justify-between">
+                    <span>Thursday</span>
                     <span>{markhamLocation.thursday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Friday:</span>
+                  <li className="flex justify-between">
+                    <span>Friday</span>
                     <span>{markhamLocation.friday}</span>
                   </li>
                   <li className="flex justify-between w-full">
-                    <span>Saturday:</span>
+                    <span>Saturday</span>
                     <span>{markhamLocation.saturday}</span>
                   </li>
                 </ul>
@@ -185,7 +154,7 @@ function Footer({
                   Ashgrove Medical Center
                 </h3>
                 <div className="flex items-center mb-2">
-                  <FaMapMarkerAlt className="mr-2 inline-block text-black" />
+                  <FaMapMarkerAlt className="mr-2 inline-block text-white" />
                   <a
                     className="underline hover:no-underline"
                     target="_blank"
@@ -196,7 +165,7 @@ function Footer({
                   </a>
                 </div>
                 <div className="flex items-center mb-2">
-                  <FaPhone className="mr-2 text-black" />
+                  <FaPhone className="mr-2 text-white" />
                   <a
                     className="underline hover:no-underline"
                     href={`tel:${ashgroveLocation.phone}`}
@@ -205,7 +174,7 @@ function Footer({
                   </a>
                 </div>
                 <div className="flex items-center mb-2">
-                  <FaFax className="mr-2 text-black" />
+                  <FaFax className="mr-2 text-white" />
                   <a
                     className="underline hover:no-underline"
                     href={`fax:${ashgroveLocation.fax}`}
@@ -215,9 +184,9 @@ function Footer({
                 </div>
                 <div className="flex items-center mb-2">
                   {isEnvelopeIconClosed ? (
-                    <RxEnvelopeOpen className="mr-2 block h-4 w-4 text-black" />
+                    <RxEnvelopeOpen className="mr-2 block h-4 w-4 text-white" />
                   ) : (
-                    <RxEnvelopeClosed className="mr-2 block h-4 w-4 text-black" />
+                    <RxEnvelopeClosed className="mr-2 block h-4 w-4 text-white" />
                   )}
                   <a
                     className="underline text-lg italic hover:no-underline"
@@ -230,34 +199,34 @@ function Footer({
                 </div>
               </div>
               <div>
-                <h2 className="text-xl font-bold mb-4">Hours of Operation:</h2>
-                <ul className="flex flex-col gap-2 font-roboto text-black">
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Sunday:</span>
+                <h2 className="text-xl font-bold mb-4">Hours</h2>
+                <ul className="flex flex-col gap-2 font-roboto text-white">
+                  <li className="flex justify-between">
+                    <span>Sunday</span>
                     <span>{ashgroveLocation.sunday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Monday:</span>
+                  <li className="flex justify-between">
+                    <span>Monday</span>
                     <span>{ashgroveLocation.monday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Tuesday:</span>
+                  <li className="flex justify-between">
+                    <span>Tuesday</span>
                     <span>{ashgroveLocation.tuesday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Wednesday:</span>
+                  <li className="flex justify-between">
+                    <span>Wednesday</span>
                     <span>{ashgroveLocation.wednesday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Thursday:</span>
+                  <li className="flex justify-between">
+                    <span>Thursday</span>
                     <span>{ashgroveLocation.thursday}</span>
                   </li>
-                  <li className="flex justify-between w-full py-1 border-b border-zinc-800">
-                    <span>Friday:</span>
+                  <li className="flex justify-between">
+                    <span>Friday</span>
                     <span>{ashgroveLocation.friday}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Saturday:</span>
+                    <span>Saturday</span>
                     <span>{ashgroveLocation.saturday}</span>
                   </li>
                 </ul>
@@ -265,28 +234,42 @@ function Footer({
             </div>
           )}
         </div>
-
         {/* Company Links */}
-        <div className="mt-8">
-          <ul className="flex justify-center md:justify-end gap-6 text-sm font-roboto">
-            {companyLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={`/${link.href}`}
-                  className="underline hover:no-underline"
+        <div className="border-t mt-8 pt-8">
+          <div className="flex flex-wrap justify-between items-center">
+            <ul className="flex space-x-6 mb-4 md:mb-0">
+              {companyLinks.map((link) => (
+                <li key={link.href} className="hover:underline">
+                  <Link href={link.href}>{link.text}</Link>
+                </li>
+              ))}
+            </ul>
+            <ul className="flex space-x-6">
+              <li>
+                <a
+                  href="https://www.facebook.com/jointrehab"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
                 >
-                  {link.text}
-                </Link>
+                  <CiFacebook size={24} className="hover:scale-110" />
+                </a>
               </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Copyright */}
-        <div className="mt-8 text-center">
-          <p className="text-sm">
+              <li>
+                <a
+                  href="https://www.instagram.com/jointrehab"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <CiInstagram size={24} className="hover:scale-110" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="text-center text-base text-white mt-4">
             &copy; {new Date().getFullYear()} Joint Rehab. All rights reserved.
-          </p>
+          </div>
         </div>
       </div>
     </footer>

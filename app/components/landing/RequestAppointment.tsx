@@ -4,7 +4,7 @@ import Section from "../common/Section";
 function RequestAppointment() {
   return (
     <Section>
-      <div className="flex items-center justify-evenly  ">
+      <div className="flex items-center justify-evenly bg- ">
         <div className="md:text-4xl text-2xl font-medium text-white ">
           Request your appointment today.
         </div>
