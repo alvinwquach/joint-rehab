@@ -26,9 +26,7 @@ export default async function RequestAppointment() {
   return (
     <div>
       <Section>
-        <Suspense fallback={<RequestAppointmentForm services={[]} />}>
-          <RequestAppointmentForm services={services} />
-        </Suspense>
+        <RequestAppointmentForm services={services} />
       </Section>
     </div>
   );

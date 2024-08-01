@@ -6,16 +6,18 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input/input";
 import ReactDatePicker from "react-datepicker";
 import "react-phone-number-input/style.css";
 import { Service } from "@/types/Service";
+import { useSuspenseQuery } from "@apollo/client";
+import { GET_SERVICES } from "@/graphql/queries";
+import { FaUser } from "react-icons/fa";
 import {
   MdEmail,
   MdHealthAndSafety,
   MdLocationOn,
   MdPhone,
 } from "react-icons/md";
-import { FaCalendarAlt, FaUser } from "react-icons/fa";
 
-interface RequestAppointmentFormProps {
-  services: Service[];
+interface ServicesQueryResult {
+  allService: Service[];
 }
 
 type FormValues = {
@@ -30,7 +32,11 @@ type FormValues = {
   message: string;
 };
 
-function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
+function RequestAppointmentForm() {
+  const { data: serviceData } =
+    useSuspenseQuery<ServicesQueryResult>(GET_SERVICES);
+  const services = serviceData?.allService ?? [];
+
   const onSubmit = (data: FormValues) => {
     console.log(data);
   };
@@ -55,7 +61,9 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
   });
 
   const searchParams = useSearchParams();
+  // Get serviceName from searchParams
   const serviceName = searchParams.get("service");
+  // Set the value of subject based on serviceName
   setValue("subject", serviceName || "");
 
   const locationOptions = [
@@ -77,7 +85,7 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
           <div className="flex flex-col justify-evenly md:gap-4 sm:flex-row">
             <div className="flex flex-col w-full">
               {errors.firstName && (
-                <span className="absolute mt-24 ml-2 text-red-500 font-roboto">
+                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
                   required
                 </span>
               )}
@@ -101,7 +109,7 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
             </div>
             <div className="flex flex-col w-full">
               {errors.lastName && (
-                <span className="absolute mt-24 ml-2 text-red-500 font-roboto">
+                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
                   required
                 </span>
               )}
@@ -128,7 +136,7 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
           <div className="flex flex-col justify-evenly md:gap-4 sm:flex-row">
             <div className="flex flex-col w-full">
               {errors.email && (
-                <span className="absolute mt-24 ml-2 text-red-500 font-roboto">
+                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
                   required
                 </span>
               )}
@@ -158,7 +166,7 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
             </div>
             <div className="flex flex-col w-full">
               {errors.phone && (
-                <span className="absolute mt-24 ml-2 text-red-500 font-roboto">
+                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
                   Provide valid number
                 </span>
               )}
@@ -210,7 +218,7 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
             </label>
             <label
               htmlFor="phone"
-              className="ml-2 text-lg font-regular font-roboto text-black"
+              className="ml-2 text-lg font-regular font-roboto text-gray-900 dark:text-gray-300"
             >
               <input
                 className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -236,19 +244,49 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
                 <MdLocationOn className="h-4 w-4 text-gray-500" />
               </div>
               <select
+                id="location"
+                className="w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                 {...register("preferredLocation", { required: true })}
-                className="block w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                defaultValue=""
               >
                 <option value="" disabled>
-                  Select your preferred location
+                  Select a location
                 </option>
-                {locationOptions.map((location) => (
-                  <option key={location.value} value={location.value}>
-                    {location.label}
+                {locationOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
                   </option>
                 ))}
               </select>
             </div>
+          </div>
+          <div className="flex flex-col gap-y-4 mt-5">
+            <h3 className="text-2xl text-black font-roboto font-bold">
+              When would you like to come in?
+            </h3>
+            <p className="text-black font-roboto">
+              We will contact you as soon as possible with a time based on
+              availability.
+            </p>
+            <label
+              htmlFor="date"
+              className="block mt-4 text-sm text-black sr-only"
+            >
+              Date
+            </label>
+            <Controller
+              control={control}
+              name="date"
+              render={({ field: { onChange, onBlur, value } }) => (
+                <ReactDatePicker
+                  className="w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                  placeholderText="Select date"
+                  onChange={(e) => onChange(e)}
+                  onBlur={onBlur}
+                  selected={value}
+                />
+              )}
+            />
           </div>
           <div className="flex flex-col gap-y-4 mt-5">
             <h3 className="text-2xl text-black font-roboto font-bold ">
@@ -284,63 +322,41 @@ function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
               </span>
             )}
           </div>
-
-          <div className="flex flex-col gap-y-4 mt-5">
-            <h3 className="text-2xl text-black font-roboto font-bold">
-              When would you like to come in?
-            </h3>
-            <p className="text-black font-roboto">
-              We will contact you as soon as possible with a time based on
-              availability.
-            </p>
-            <label
-              htmlFor="date"
-              className="block mt-4 text-sm text-black sr-only"
-            >
-              Date
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <FaCalendarAlt className="h-4 w-4 text-gray-500" />
-              </div>
-              <Controller
-                control={control}
-                name="date"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <ReactDatePicker
-                    className="block w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
-                    placeholderText="Select date"
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    selected={value}
-                  />
-                )}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-y-4 mt-5">
+          <div className="flex flex-col">
             <label
               htmlFor="message"
-              className="block mb-2 text-sm font-roboto text-black"
+              className="mt-6 mb-4 block text-sm font-roboto text-gray-900 dark:text-white"
             >
               Message
             </label>
             <textarea
+              rows={5}
               placeholder="Message"
-              className="w-full h-36 py-3 pl-3 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
-              {...register("message")}
+              className="w-full p-4 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+              {...register("message", {
+                required: true,
+                minLength: 5,
+                maxLength: 1200,
+              })}
             />
+            {errors.message && (
+              <span className="absolute mt-messageRem ml-2 text-red-500  font-roboto">
+                required (max 1200 Chars)
+              </span>
+            )}
+          </div>
+          <div className="flex">
+            <button
+              type="submit"
+              className="mt-4 px-6 py-3 bg-blue-700 text-white text-sm font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Submit
+            </button>
           </div>
         </div>
-        <button
-          type="submit"
-          className="mt-8 px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Submit
-        </button>
       </form>
     </div>
   );
-}
+};
 
 export default RequestAppointmentForm;
