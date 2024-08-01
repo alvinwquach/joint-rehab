@@ -15,6 +15,8 @@ function LandingHero() {
         }}
         quality={100}
         priority
+        sizes="100vw"
+        placeholder="blur"
       />
       <div className="absolute inset-0 bg-gray-700 bg-opacity-30"></div>
       <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 relative z-10">
