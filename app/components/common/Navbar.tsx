@@ -17,6 +17,8 @@ import {
 import Menulink from "./Menulink";
 import { HiMenu, HiX, HiChevronDown } from "react-icons/hi";
 
+import jointRehabLogo from "../../../public//images/logo-new.png";
+
 type DropdownOption = {
   name: string;
   slug: string;
@@ -68,11 +70,12 @@ function Navbar({ navigation }: NavbarProps) {
                 <Link href="/">
                   <div className="flex items-center cursor-pointer md:ml-5 ml-0">
                     <Image
-                      src="/images/logo-new.png"
-                      alt="Image of company logo with the words physiotherapy and massage therapy"
-                      height={200}
-                      width={200}
+                      src={jointRehabLogo}
+                      alt="Company logo"
+                      height={150}
+                      width={150}
                       quality={100}
+                      priority
                     />
                   </div>
                 </Link>
