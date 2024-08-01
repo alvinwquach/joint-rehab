@@ -20,6 +20,7 @@ const config: Config = {
         fourth: "#333333",
         fifth: "#7DA6C4",
         background: "#F8FAFC",
+        text: "#0D1216",
       },
     },
   },

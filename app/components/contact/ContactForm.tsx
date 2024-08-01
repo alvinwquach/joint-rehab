@@ -2,7 +2,7 @@
 
 import { useForm, Controller } from "react-hook-form";
 import { FaUser } from "react-icons/fa";
-import { MdEmail, MdPhone, MdSubject } from "react-icons/md";
+import { MdEmail, MdPhone, MdFax } from "react-icons/md";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input/input";
 import "react-phone-number-input/style.css";
 
@@ -16,13 +16,80 @@ type FormValues = {
   message: string;
 };
 
+// import { MdPhone, MdEmail, MdFax } from "react-icons/md";
+import { Location } from "@/types/Location";
+
+interface ContactDetailsProps {
+  markhamPlaza: Location[];
+  ashgroveMedicalCentre: Location[];
+}
+
+function ContactDetails({
+  markhamPlaza,
+  ashgroveMedicalCentre,
+}: ContactDetailsProps) {
+  const markhamPlazaLocation = markhamPlaza[0] || {};
+  const ashgroveMedicalCentreLocation = ashgroveMedicalCentre[0] || {};
+
+  return (
+    <div className="w-full flex flex-col items-center text-text">
+      <h2 className="text-4xl font-bold mb-8">Contact Us</h2>
+      <div className="flex flex-col md:flex-row gap-12 justify-center">
+        <div className="flex flex-col items-center">
+          <div className="mb-4">
+            <MdPhone className="h-12 w-12" />
+          </div>
+          <div className="font-bold">Call us:</div>
+          <div className="text-center">
+            <p className="text-lg font-semibold">
+              Markham Plaza: {markhamPlazaLocation.phone}
+            </p>
+
+            <p className="text-lg font-semibold">
+              Ashgrove: {ashgroveMedicalCentreLocation.phone}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="mb-4">
+            <MdEmail className="h-12 w-12" />
+          </div>
+          <div className="font-bold">Email us:</div>
+          <div className="text-center">
+            <p className="text-lg font-semibold">
+              Markham Plaza: {markhamPlazaLocation.email}
+            </p>
+            <p className="text-lg font-semibold">
+              Ashgrove: {ashgroveMedicalCentreLocation.email}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="mb-4">
+            <MdFax className="h-12 w-12" />
+          </div>
+          <div className="font-bold">Send us a fax:</div>
+          <div className="text-center">
+            <p className="text-lg font-semibold">
+              Markham Plaza: {markhamPlazaLocation.fax}
+            </p>
+            <p className="text-lg font-semibold">
+              Ashgrove: {ashgroveMedicalCentreLocation.fax}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ContactForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm({
+  } = useForm<FormValues>({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -39,87 +106,81 @@ function ContactForm() {
   };
 
   return (
-    <div className="flex flex-col-reverse gap-3 md:gap-12 xl:flex-row">
+    <div className="relative bottom-72 bg-white p-8 rounded-lg shadow-lg max-w-xl mx-auto z-20">
       <form
         onSubmit={handleSubmit(onSubmit)}
         id="contact-form"
-        className="w-full flex-1 m-auto pt-4 xl:pt-0"
+        className="space-y-6"
       >
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-2xl text-gray-550 dark:text-white font-roboto font-bold">
-            Let&rsquo;s get to know you
-          </h2>
-          <div className="flex flex-col justify-evenly md:gap-4 sm:flex-row">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col justify-between md:gap-6 sm:flex-row">
             <div className="flex flex-col w-full">
               {errors.firstName && (
-                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
-                  required
-                </span>
+                <span className="text-red-500 font-roboto">required</span>
               )}
               <label
                 htmlFor="firstName"
-                className="block mb-2 mt-5 text-sm font-roboto text-white"
+                className="block mb-2 mt-4 text-lg font-roboto text-text"
               >
                 First Name
               </label>
               <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <FaUser className="h-4 w-4 text-gray-100" />
+                  <FaUser className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
                   placeholder="First Name"
                   type="text"
-                  className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  {...register("firstName", { required: true, maxLength: 30 })}
+                  className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                  {...register("firstName", {
+                    required: true,
+                    maxLength: 30,
+                  })}
                 />
               </div>
             </div>
             <div className="flex flex-col w-full">
               {errors.lastName && (
-                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
-                  required
-                </span>
+                <span className="text-red-500 font-roboto">required</span>
               )}
               <label
                 htmlFor="lastName"
-                className="block mb-2 mt-5 text-sm font-roboto text-white"
+                className="block mb-2 mt-4 text-lg font-roboto text-text"
               >
                 Last Name
               </label>
               <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <FaUser className="h-4 w-4 text-gray-100" />
+                  <FaUser className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
                   placeholder="Last Name"
                   type="text"
-                  className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                   {...register("lastName", { required: true, maxLength: 30 })}
                 />
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-evenly md:gap-4 sm:flex-row">
+          <div className="flex flex-col justify-between md:gap-6 sm:flex-row">
             <div className="flex flex-col w-full">
               {errors.email && (
-                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
-                  required
-                </span>
+                <span className="text-red-500 font-roboto">required</span>
               )}
               <label
                 htmlFor="email"
-                className="block mb-2 mt-5 text-sm font-roboto text-white"
+                className="block mb-2 mt-4 text-lg font-roboto text-text"
               >
                 Email
               </label>
               <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <MdEmail className="h-4 w-4 text-gray-100" />
+                  <MdEmail className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
                   placeholder="Email"
                   type="text"
-                  className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -132,19 +193,19 @@ function ContactForm() {
             </div>
             <div className="flex flex-col w-full">
               {errors.phone && (
-                <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
+                <span className="text-red-500 font-roboto">
                   Provide valid number
                 </span>
               )}
               <label
                 htmlFor="phone"
-                className="block mb-2 mt-5 text-sm font-roboto text-white"
+                className="block mb-2 mt-4 text-lg font-roboto text-text"
               >
                 Phone Number
               </label>
               <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <MdPhone className="h-4 w-4 text-gray-100" />
+                  <MdPhone className="h-5 w-5 text-gray-500" />
                 </div>
                 <Controller
                   name="phone"
@@ -154,7 +215,7 @@ function ContactForm() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <PhoneInput
-                      className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Phone Number"
                       value={value}
                       onChange={onChange}
@@ -166,16 +227,16 @@ function ContactForm() {
               </div>
             </div>
           </div>
-          <p className="text-xl dark:text-white">
+          <p className="text-xl text-text">
             What is your preferred method of contact?
           </p>
-          <div className="flex flex-col gap-56 gap-y-8 sm:flex-row">
+          <div className="flex flex-col gap-6 sm:flex-row">
             <label
               htmlFor="email"
-              className="ml-2 text-lg font-regular font-roboto :text-gray-300"
+              className="ml-2 text-lg font-roboto text-text flex items-center"
             >
               <input
-                className="mr-2 w-4 h-4 text-blue-600 bg-gray-100 rounded  focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 :bg-gray-700 border-gray-600"
+                className="mr-3 w-5 h-5 text-blue-600 bg-gray-100 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 border-gray-400"
                 type="checkbox"
                 value="email"
                 {...register("preferredContact")}
@@ -184,10 +245,10 @@ function ContactForm() {
             </label>
             <label
               htmlFor="phone"
-              className="ml-2 text-lg font-regular font-roboto text-gray-900 dark:text-gray-300"
+              className="ml-2 text-lg font-roboto text-text flex items-center"
             >
               <input
-                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="mr-3 w-5 h-5 text-blue-600 bg-gray-100 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 border-gray-400"
                 type="checkbox"
                 value="phone"
                 {...register("preferredContact")}
@@ -195,69 +256,28 @@ function ContactForm() {
               Phone
             </label>
           </div>
-
-          <div className="flex flex-col w-full">
-            {errors.subject && (
-              <span className="absolute mt-24 ml-2 text-red-500  font-roboto">
-                required
-              </span>
-            )}
-            <h3 className="text-2xl text-gray-550 dark:text-white font-roboto font-bold mt-7">
-              What can we help you with?
-            </h3>
-            <label
-              htmlFor="subject"
-              className="block text-sm font-roboto text-white sr-only"
-            >
-              Subject
-            </label>
-            <div className="relative mb-4 mt-5">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <MdSubject className="h-4 w-4 text-gray-100" />
-              </div>
-              <input
-                placeholder="Subject"
-                type="text"
-                className="w-full p-4 pl-10 text-xs md:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                {...register("subject", {
-                  required: true,
-                  minLength: 5,
-                  maxLength: 30,
-                })}
-              />
-            </div>
-          </div>
           <div className="flex flex-col">
             <label
               htmlFor="message"
-              className="mb-4 block text-sm font-roboto text-gray-900 dark:text-white"
+              className="block mb-2 mt-4 text-lg font-roboto text-text"
             >
               Message
             </label>
             <textarea
-              rows={5}
               placeholder="Message"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              {...register("message", {
-                required: true,
-                minLength: 5,
-                maxLength: 1200,
-              })}
+              rows={6}
+              className="w-full p-5 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+              {...register("message", { required: true })}
             />
-            {errors.message && (
-              <span className="absolute mt-messageRem ml-2 text-red-500  font-roboto">
-                required (max 1200 Chars)
-              </span>
-            )}
-          </div>
-          <div className="flex">
-            <button
-              type="submit"
-              value="Send"
-              className="rounded-md bg-blue-700 px-14 py-4 mt-4 text-sm font-button font-bold text-white  hover:bg-gray-700  cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-            >
-              SUBMIT
-            </button>
+            <div className="flex">
+              <button
+                type="submit"
+                value="Send"
+                className="rounded-md bg-blue-700 px-16 py-4 mt-4 text-base font-button font-bold text-white hover:bg-gray-700 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+              >
+                SUBMIT
+              </button>
+            </div>
           </div>
         </div>
       </form>
