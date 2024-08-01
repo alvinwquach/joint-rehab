@@ -16,73 +16,6 @@ type FormValues = {
   message: string;
 };
 
-// import { MdPhone, MdEmail, MdFax } from "react-icons/md";
-import { Location } from "@/types/Location";
-
-interface ContactDetailsProps {
-  markhamPlaza: Location[];
-  ashgroveMedicalCentre: Location[];
-}
-
-function ContactDetails({
-  markhamPlaza,
-  ashgroveMedicalCentre,
-}: ContactDetailsProps) {
-  const markhamPlazaLocation = markhamPlaza[0] || {};
-  const ashgroveMedicalCentreLocation = ashgroveMedicalCentre[0] || {};
-
-  return (
-    <div className="w-full flex flex-col items-center text-text">
-      <h2 className="text-4xl font-bold mb-8">Contact Us</h2>
-      <div className="flex flex-col md:flex-row gap-12 justify-center">
-        <div className="flex flex-col items-center">
-          <div className="mb-4">
-            <MdPhone className="h-12 w-12" />
-          </div>
-          <div className="font-bold">Call us:</div>
-          <div className="text-center">
-            <p className="text-lg font-semibold">
-              Markham Plaza: {markhamPlazaLocation.phone}
-            </p>
-
-            <p className="text-lg font-semibold">
-              Ashgrove: {ashgroveMedicalCentreLocation.phone}
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="mb-4">
-            <MdEmail className="h-12 w-12" />
-          </div>
-          <div className="font-bold">Email us:</div>
-          <div className="text-center">
-            <p className="text-lg font-semibold">
-              Markham Plaza: {markhamPlazaLocation.email}
-            </p>
-            <p className="text-lg font-semibold">
-              Ashgrove: {ashgroveMedicalCentreLocation.email}
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="mb-4">
-            <MdFax className="h-12 w-12" />
-          </div>
-          <div className="font-bold">Send us a fax:</div>
-          <div className="text-center">
-            <p className="text-lg font-semibold">
-              Markham Plaza: {markhamPlazaLocation.fax}
-            </p>
-            <p className="text-lg font-semibold">
-              Ashgrove: {ashgroveMedicalCentreLocation.fax}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function ContactForm() {
   const {
     register,
@@ -106,32 +39,32 @@ function ContactForm() {
   };
 
   return (
-    <div className="relative bottom-72 bg-white p-8 rounded-lg shadow-lg max-w-xl mx-auto z-20">
+    <div className="relative bottom-96 bg-white p-4 rounded-lg shadow-lg max-w-xl mx-auto z-20 min-h-[500px]">
       <form
         onSubmit={handleSubmit(onSubmit)}
         id="contact-form"
         className="space-y-6"
       >
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col justify-between md:gap-6 sm:flex-row">
+          <div className="flex flex-col sm:flex-row sm:gap-6">
             <div className="flex flex-col w-full">
               {errors.firstName && (
-                <span className="text-red-500 font-roboto">required</span>
+                <span className="text-red-500 text-sm">Required</span>
               )}
               <label
                 htmlFor="firstName"
-                className="block mb-2 mt-4 text-lg font-roboto text-text"
+                className="block text-sm font-semibold text-gray-700"
               >
                 First Name
               </label>
-              <div className="relative mb-4">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <FaUser className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
                   placeholder="First Name"
                   type="text"
-                  className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                   {...register("firstName", {
                     required: true,
                     maxLength: 30,
@@ -141,46 +74,48 @@ function ContactForm() {
             </div>
             <div className="flex flex-col w-full">
               {errors.lastName && (
-                <span className="text-red-500 font-roboto">required</span>
+                <span className="text-red-500 text-sm">Required</span>
               )}
               <label
                 htmlFor="lastName"
-                className="block mb-2 mt-4 text-lg font-roboto text-text"
+                className="block text-sm font-semibold text-gray-700"
               >
                 Last Name
               </label>
-              <div className="relative mb-4">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <FaUser className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
                   placeholder="Last Name"
                   type="text"
-                  className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                   {...register("lastName", { required: true, maxLength: 30 })}
                 />
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-between md:gap-6 sm:flex-row">
+          <div className="flex flex-col sm:flex-row sm:gap-6">
             <div className="flex flex-col w-full">
               {errors.email && (
-                <span className="text-red-500 font-roboto">required</span>
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
               )}
               <label
                 htmlFor="email"
-                className="block mb-2 mt-4 text-lg font-roboto text-text"
+                className="block text-sm font-semibold text-gray-700"
               >
                 Email
               </label>
-              <div className="relative mb-4">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <MdEmail className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
                   placeholder="Email"
                   type="text"
-                  className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -193,18 +128,18 @@ function ContactForm() {
             </div>
             <div className="flex flex-col w-full">
               {errors.phone && (
-                <span className="text-red-500 font-roboto">
-                  Provide valid number
+                <span className="text-red-500 text-sm">
+                  {errors.phone.message}
                 </span>
               )}
               <label
                 htmlFor="phone"
-                className="block mb-2 mt-4 text-lg font-roboto text-text"
+                className="block text-sm font-semibold text-gray-700"
               >
                 Phone Number
               </label>
-              <div className="relative mb-4">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <MdPhone className="h-5 w-5 text-gray-500" />
                 </div>
                 <Controller
@@ -215,7 +150,7 @@ function ContactForm() {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <PhoneInput
-                      className="w-full p-5 pl-12 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full py-3 pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                       placeholder="Phone Number"
                       value={value}
                       onChange={onChange}
@@ -227,60 +162,53 @@ function ContactForm() {
               </div>
             </div>
           </div>
-          <p className="text-xl text-text">
-            What is your preferred method of contact?
-          </p>
-          <div className="flex flex-col gap-6 sm:flex-row">
-            <label
-              htmlFor="email"
-              className="ml-2 text-lg font-roboto text-text flex items-center"
-            >
-              <input
-                className="mr-3 w-5 h-5 text-blue-600 bg-gray-100 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 border-gray-400"
-                type="checkbox"
-                value="email"
-                {...register("preferredContact")}
-              />{" "}
-              Email
-            </label>
-            <label
-              htmlFor="phone"
-              className="ml-2 text-lg font-roboto text-text flex items-center"
-            >
-              <input
-                className="mr-3 w-5 h-5 text-blue-600 bg-gray-100 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 border-gray-400"
-                type="checkbox"
-                value="phone"
-                {...register("preferredContact")}
-              />{" "}
-              Phone
-            </label>
+          <div className="flex flex-col">
+            <p className="text-base font-semibold text-gray-700">
+              Preferred Method of Contact
+            </p>
+            <div className="flex flex-col sm:flex-row sm:gap-4 mt-2">
+              <label className="flex items-center text-sm font-semibold text-gray-700">
+                <input
+                  className="mr-2 text-blue-600 bg-gray-100 rounded focus:ring-blue-600 focus:ring-2 border-gray-300"
+                  type="checkbox"
+                  value="email"
+                  {...register("preferredContact")}
+                />{" "}
+                Email
+              </label>
+              <label className="flex items-center text-sm font-semibold text-gray-700">
+                <input
+                  className="mr-2 text-blue-600 bg-gray-100 rounded focus:ring-blue-600 focus:ring-2 border-gray-300"
+                  type="checkbox"
+                  value="phone"
+                  {...register("preferredContact")}
+                />{" "}
+                Phone
+              </label>
+            </div>
           </div>
           <div className="flex flex-col">
             <label
               htmlFor="message"
-              className="block mb-2 mt-4 text-lg font-roboto text-text"
+              className="block text-sm font-semibold text-gray-700"
             >
               Message
             </label>
             <textarea
               placeholder="Message"
               rows={6}
-              className="w-full p-5 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-4 text-base text-gray-900 border border-gray-400 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
               {...register("message", { required: true })}
             />
-            <div className="flex">
-              <button
-                type="submit"
-                value="Send"
-                className="rounded-md bg-blue-700 px-16 py-4 mt-4 text-base font-button font-bold text-white hover:bg-gray-700 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-              >
-                SUBMIT
-              </button>
-            </div>
           </div>
         </div>
       </form>
+      <button
+        type="submit"
+        className="mt-4 px-6 py-3 bg-blue-700 text-white text-sm font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        Submit
+      </button>
     </div>
   );
 }
