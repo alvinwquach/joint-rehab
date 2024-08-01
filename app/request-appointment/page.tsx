@@ -13,7 +13,7 @@ function RequestAppointment() {
   return (
     <div>
       <Section>
-        <Suspense>
+        <Suspense fallback={<RequestAppointmentForm />}>
           <RequestAppointmentForm />
         </Suspense>
       </Section>
