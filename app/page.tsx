@@ -43,11 +43,11 @@ export default async function Home() {
         <AboutUs />
         <Accessible />
       </Section>
-      <Section bg={Section.Colors.Fifth} className="!py-16">
-        <Values />
-      </Section>
-      <Section bg={Section.Colors.Light} className="py-16">
+      <Section bg={Section.Colors.Fifth} className="py-16">
         <ValueMission />
+      </Section>
+      <Section bg={Section.Colors.Light} className="!py-16">
+        <Values />
       </Section>
       <WhyChooseUs />
 
