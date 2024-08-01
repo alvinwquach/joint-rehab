@@ -3,6 +3,7 @@ import Section from "../components/common/Section";
 import RequestAppointmentForm from "../components/request-appointment/RequestAppointmentForm";
 import { getClient } from "../lib/apollo-client";
 import { GET_SERVICE_NAMES } from "@/graphql/queries";
+import { Service } from "@/types/Service";
 
 export const metadata = {
   title: "Joint Rehab - Request Appointment",
