@@ -58,6 +58,14 @@ export const GET_SERVICES = gql`
   }
 `;
 
+export const GET_SERVICE_NAMES = gql`
+  query allServiceNames {
+    allService {
+      name
+    }
+  }
+`;
+
 const TEAM_FRAGMENT = gql`
   fragment team on Team {
     image {

@@ -20,6 +20,10 @@ interface ServicesQueryResult {
   allService: Service[];
 }
 
+interface RequestAppointmentFormProps {
+  services: Service[];
+}
+
 type FormValues = {
   firstName: string;
   lastName: string;
@@ -32,11 +36,7 @@ type FormValues = {
   message: string;
 };
 
-function RequestAppointmentForm() {
-  const { data: serviceData } =
-    useSuspenseQuery<ServicesQueryResult>(GET_SERVICES);
-  const services = serviceData?.allService ?? [];
-
+function RequestAppointmentForm({ services }: RequestAppointmentFormProps) {
   const onSubmit = (data: FormValues) => {
     console.log(data);
   };
