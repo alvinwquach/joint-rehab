@@ -111,6 +111,27 @@ export const GET_ASHGROVE_MEDICAL_CENTER_LOCATION = gql`
   }
 `;
 
+export const GET_ASHGROVE_MEDICAL_CENTER_CONTACT_DETAILS = gql`
+  query ashgroveMedicalCenterLocation {
+    allAshgroveMedicalCenterLocation {
+      phone
+      fax
+      email
+    }
+  }
+`;
+
+export const GET_MARKHAM_PLAZA_CONTACT_DETAILS = gql`
+  query markhamPlazaLocation {
+    allMarkhamPlazaLocation {
+      phone
+      fax
+      email
+    }
+  }
+`;
+
+
 export const GET_MARKHAM_PLAZA_LOCATION = gql`
   query markhamPlazaLocation {
     allMarkhamPlazaLocation {
