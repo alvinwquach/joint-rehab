@@ -1,9 +1,8 @@
+import { getClient } from "../lib/apollo-client";
 import { GET_SERVICE_NAMES } from "@/graphql/queries";
 import { Service } from "@/types/Service";
-import { Suspense } from "react";
 import Section from "../components/common/Section";
 import RequestAppointmentForm from "../components/request-appointment/RequestAppointmentForm";
-import { getClient } from "../lib/apollo-client";
 
 export const metadata = {
   title: "Joint Rehab - Request Appointment",
