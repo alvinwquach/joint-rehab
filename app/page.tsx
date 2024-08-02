@@ -25,14 +25,15 @@ interface TestimonialsQueryResult {
 async function fetchLandingData() {
   try {
     // Perform all API queries concurrently
-    const [testimonialData, serviceData] = await Promise.all([
-      getClient().query<TestimonialsQueryResult>({ query: GET_TESTIMONIALS }),
-      getClient().query<ServicesQueryResult>({ query: GET_SERVICES }),
-    ]);
+    const [{ data: testimonialData }, { data: serviceData }] =
+      await Promise.all([
+        getClient().query<TestimonialsQueryResult>({ query: GET_TESTIMONIALS }),
+        getClient().query<ServicesQueryResult>({ query: GET_SERVICES }),
+      ]);
     // Return the extracted data, defaulting to empty arrays if data is missing
     return {
-      testimonials: testimonialData?.data.allTestimonial ?? [],
-      services: serviceData?.data?.allService || [],
+      testimonials: testimonialData?.allTestimonial ?? [],
+      services: serviceData?.allService || [],
     };
   } catch (error) {
     throw new Error(
@@ -40,7 +41,6 @@ async function fetchLandingData() {
     );
   }
 }
-
 
 export default async function Home() {
   const { testimonials, services } = await fetchLandingData();
@@ -60,7 +60,6 @@ export default async function Home() {
         <Values />
       </Section>
       <WhyChooseUs />
-
       <Section bg={Section.Colors.Light} className="py-16">
         <Services services={services} />
       </Section>
