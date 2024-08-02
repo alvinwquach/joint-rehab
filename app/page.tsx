@@ -22,18 +22,28 @@ interface TestimonialsQueryResult {
   allTestimonial: Testimonial[];
 }
 
+async function fetchLandingData() {
+  try {
+    // Perform all API queries concurrently
+    const [testimonialData, serviceData] = await Promise.all([
+      getClient().query<TestimonialsQueryResult>({ query: GET_TESTIMONIALS }),
+      getClient().query<ServicesQueryResult>({ query: GET_SERVICES }),
+    ]);
+    // Return the extracted data, defaulting to empty arrays if data is missing
+    return {
+      testimonials: testimonialData?.data.allTestimonial ?? [],
+      services: serviceData?.data?.allService || [],
+    };
+  } catch (error) {
+    throw new Error(
+      `Failed to fetch data: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
+  }
+}
+
+
 export default async function Home() {
-  const { data: testimonialData } =
-    await getClient().query<TestimonialsQueryResult>({
-      query: GET_TESTIMONIALS,
-    });
-
-  const { data: serviceData } = await getClient().query<ServicesQueryResult>({
-    query: GET_SERVICES,
-  });
-
-  const testimonials = testimonialData?.allTestimonial ?? [];
-  const services = serviceData?.allService ?? [];
+  const { testimonials, services } = await fetchLandingData();
 
   return (
     <main>
