@@ -15,17 +15,30 @@ export const metadata = {
   },
 };
 
-async function Contact() {
-  const { data: markhamPlazaData } = await getClient().query({
-    query: GET_MARKHAM_PLAZA_CONTACT_DETAILS,
-  });
-  const { data: ashgroveData } = await getClient().query({
-    query: GET_ASHGROVE_MEDICAL_CENTER_CONTACT_DETAILS,
-  });
+async function FetchContactData() {
+  try {
+    // Perform all API queries concurrently
+    const [{ data: markhamPlazaData }, { data: ashgroveData }] =
+      await Promise.all([
+        getClient().query({ query: GET_MARKHAM_PLAZA_CONTACT_DETAILS }),
+        getClient().query({
+          query: GET_ASHGROVE_MEDICAL_CENTER_CONTACT_DETAILS,
+        }),
+      ]);
+    // Return the extracted data, defaulting to empty arrays if data is missing
+    return {
+      markhamPlaza: markhamPlazaData?.allMarkhamPlazaLocation ?? [],
+      ashgroveMedicalCentre: ashgroveData?.ashgroveMedicalCentre ?? [],
+    };
+  } catch (error) {
+    throw new Error(
+      `Failed to fetch data: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
+  }
+}
 
-  const markhamPlaza = markhamPlazaData?.allMarkhamPlazaLocation ?? [];
-  const ashgroveMedicalCentre =
-    ashgroveData?.allAshgroveMedicalCenterLocation ?? [];
+async function Contact() {
+  const { markhamPlaza, ashgroveMedicalCentre } = await FetchContactData();
 
   return (
     <div>
