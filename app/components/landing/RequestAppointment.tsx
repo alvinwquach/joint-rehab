@@ -19,10 +19,9 @@ function RequestAppointment() {
         We want you to get better.
       </div>
       <div className="mt-4 text-lg">
-        At Joint Rehab, we have a dedicated team of registered physiotherapists,
-        massage therapists and acupuncturists who will address your pain,
-        strength, mobility, and function so you can return to the activities
-        that are important to you.
+        At Joint Rehab, we have a dedicated team of registered physiotherapists
+        who will address your pain, strength, mobility, and function so you can
+        return to the activities that are important to you.
       </div>
     </Section>
   );
