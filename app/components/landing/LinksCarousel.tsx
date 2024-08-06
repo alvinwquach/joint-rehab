@@ -137,10 +137,6 @@ function LinksCarousel() {
 
   return (
     <div className="relative overflow-hidden">
-      <p className="text-center text-3xl font-bold mb-6">
-        <span className="uppercase text-indigo-600">Links</span>{" "}
-        <span className="sr-only">I Specialize In</span>
-      </p>
       <div ref={scrollerRef} className="flex flex-nowrap whitespace-nowrap">
         {links.map((link, index) => (
           <div
