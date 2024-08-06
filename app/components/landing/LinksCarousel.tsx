@@ -1,8 +1,11 @@
 "use client";
 
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-import Image from "next/image";
+import { useRef } from "react";
+import Image, { StaticImageData } from "next/image";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
 import collegeOfPhysiotherapists from "../../../public/images/links/collegeOfPhysiotherapistsOfOntario.jpeg";
 import canadianPhysiotherapyAssocation from "../../../public/images/links/canadianPhysiotherapyAssocation.png";
 import ontarioPhysiotherapyAssocation from "../../../public/images/links/ontarioPhysiotherapyAssociation.jpeg";
@@ -19,7 +22,15 @@ import oakValleyHealth from "../../../public/images/links/oakValleyHealth.png";
 import worldHealthOrganization from "../../../public/images/links/worldHealthOrganization.png";
 import cancerCareOntario from "../../../public/images/links/cancerCareOntario.png";
 
-const links = [
+gsap.registerPlugin(ScrollTrigger);
+
+interface Link {
+  title: string;
+  image: StaticImageData;
+  link: string;
+}
+
+const links: Link[] = [
   {
     title: "College of Physiotherapists of Ontario",
     image: collegeOfPhysiotherapists,
@@ -97,83 +108,66 @@ const links = [
   },
 ];
 
-const LinksCarousel = () => {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>(
-    {
-      loop: true,
-      mode: "free-snap",
-      renderMode: "performance",
-      drag: false,
-      created: (slider) => {
-        slider.moveToIdx(5, true);
+function LinksCarousel() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    // Calculate total scroll width
+    const totalWidth = scroller.scrollWidth;
+
+    // Create GSAP animation for continuous scrolling effect
+    gsap.to(scroller, {
+      x: `-${totalWidth}`,
+      ease: "none",
+      duration: 50, // Duration of one scroll cycle
+      repeat: -1, // Repeat indefinitely
+      modifiers: {
+        x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth),
       },
-      slides: {
-        perView: "auto",
-        spacing: 15,
-      },
-    },
-    [
-      (slider) => {
-        let timeout: NodeJS.Timeout;
-        let mouseOver = false;
+    });
 
-        function clearNextTimeout() {
-          clearTimeout(timeout);
-        }
-
-        function nextTimeout() {
-          clearTimeout(timeout);
-          if (mouseOver) return;
-          timeout = setTimeout(() => {
-            slider.next();
-          }, 2000);
-        }
-
-        slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
-            mouseOver = true;
-            clearNextTimeout();
-          });
-          slider.container.addEventListener("mouseout", () => {
-            mouseOver = false;
-            nextTimeout();
-          });
-          nextTimeout();
-        });
-
-        slider.on("dragStarted", clearNextTimeout);
-        slider.on("animationEnded", nextTimeout);
-        slider.on("updated", nextTimeout);
-      },
-    ]
-  );
+    // Cleanup function
+    return () => {
+      gsap.killTweensOf(scroller);
+    };
+  }, []);
 
   return (
-    <div className="keen-slider" ref={sliderRef}>
-      {links.map((link, index) => (
-        <div key={index} className="keen-slider__slide min-w-[200px]">
-          <a
-            href={link.link}
-            className="block cursor-pointer"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open link to ${link.title}`}
+    <div className="relative overflow-hidden">
+      <p className="text-center text-3xl font-bold mb-6">
+        <span className="uppercase text-indigo-600">Links</span>{" "}
+        <span className="sr-only">I Specialize In</span>
+      </p>
+      <div ref={scrollerRef} className="flex flex-nowrap whitespace-nowrap">
+        {links.map((link, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center transition-transform duration-300 hover:scale-105"
           >
-            <Image
-              src={link.image}
-              alt={link.title}
-              width={200}
-              height={200}
-              className="w-24 h-24 mx-auto mb-2"
-              style={{
-                objectFit: "contain",
-              }}
-            />
-          </a>
-        </div>
-      ))}
+            <a
+              href={link.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${link.title}`}
+              className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+            >
+              <div className="relative w-36 h-36 bg-white transition-all duration-300 overflow-hidden hover:shadow-2xl">
+                <Image
+                  src={link.image}
+                  alt={link.title}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 export default LinksCarousel;
