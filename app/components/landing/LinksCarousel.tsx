@@ -115,9 +115,6 @@ function LinksCarousel() {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    // Create duplicate of the links
-    const linksClone = [...links, ...links];
-
     // Set total width based on duplicated content
     const totalWidth = scroller.scrollWidth / 2;
 
