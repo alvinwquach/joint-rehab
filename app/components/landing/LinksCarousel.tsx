@@ -115,8 +115,8 @@ function LinksCarousel() {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    // Calculate total scroll width
-    const totalWidth = scroller.scrollWidth;
+    // Set total width based on duplicated content
+    const totalWidth = scroller.scrollWidth / 2;
 
     // Create GSAP animation for continuous scrolling effect
     gsap.to(scroller, {
@@ -138,7 +138,7 @@ function LinksCarousel() {
   return (
     <div className="relative overflow-hidden">
       <div ref={scrollerRef} className="flex flex-nowrap whitespace-nowrap">
-        {links.map((link, index) => (
+        {links.concat(links).map((link, index) => (
           <div
             key={index}
             className="flex flex-col items-center transition-transform duration-300 hover:scale-105"
